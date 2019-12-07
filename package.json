@@ -24,9 +24,9 @@
     "build": "gatsby build",
     "start": "gatsby serve --port ${PORT:-3000}",
     "clean": "rimraf .cache public",
-    "lint": "npm run tslint && npm run stylelint",
-    "tslint": "tslint --fix 'src/**/*.{ts,tsx}' -p .",
-    "stylelint": "stylelint 'src/**/*.scss' --syntax scss"
+    "lint": "npm run eslint:fix && npm run stylelint:fix",
+    "eslint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "stylelint:fix": "stylelint --fix 'src/**/*.scss' --syntax scss"
   },
   "dependencies": {
     "gatsby": "2.1.23",
@@ -52,17 +52,23 @@
     "@types/gsap": "1.20.2",
     "@types/lodash": "4.14.122",
     "@types/node": "11.10.4",
-    "@types/react": "16.8.6",
+    "@types/react": "^16.9.15",
     "@types/react-dom": "16.8.2",
     "@types/react-helmet": "5.0.8",
-    "@ueno/stylelint-config": "1.1.2",
-    "@ueno/tslint-config": "1.0.5",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.17.0",
+    "prettier": "^1.19.1",
+    "prettier-eslint": "^9.0.1",
+    "prettier-stylelint": "^0.4.2",
     "rimraf": "2.6.3",
-    "stylelint": "9.10.1",
+    "stylelint": "^12.0.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-scss": "^3.13.0",
-    "tslint": "5.13.1",
-    "tslint-react": "3.6.0",
     "typescript": "3.3.3333"
   }
 }

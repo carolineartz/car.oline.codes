@@ -34,11 +34,7 @@ export const GsapTools = ({ button }: IGsapToolsProps) => {
         </button>
       )}
 
-      <GsapDevTools
-        onClick={onToggleGsapTools}
-        isVisible={isVisible}
-        isFixed
-      />
+      <GsapDevTools onClick={onToggleGsapTools} isVisible={isVisible} isFixed />
     </>
   );
 };

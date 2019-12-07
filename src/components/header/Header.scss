@@ -10,14 +10,12 @@
   &__content {
     display: flex;
     align-items: center;
-
     padding: $gutter 0;
   }
 
   &__logo {
     &Svg {
       display: block;
-
       height: 16px;
       width: auto;
 

@@ -15,12 +15,10 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
   padding: 0;
-
   font-family: inherit;
   font-style: inherit;
   font-size: inherit;
   font-weight: inherit;
-
   border: 0;
   border-radius: 0;
 }
@@ -55,9 +53,7 @@ select {
   font-style: inherit;
   font-size: inherit;
   font-weight: inherit;
-
   border: 0;
-
   appearance: none;
 
   &:focus:not(:focus-visible) {

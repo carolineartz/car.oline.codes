@@ -19,6 +19,6 @@ export const Intro = ({ children }: IIntroProps) => {
           </div>
         </Row>
       </div>
-    </Container>
+  </Container>
   );
 };

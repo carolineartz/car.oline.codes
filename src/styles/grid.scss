@@ -10,10 +10,8 @@
 @mixin grid-row($direction: ltr, $align: stretch, $justify: flex-start, $grid-gutter: $gutter, $wrap: wrap) {
   display: flex;
   flex-wrap: $wrap;
-
   align-items: $align;
   justify-content: $justify;
-
   margin-left: -($grid-gutter/2);
   margin-right: -($grid-gutter/2);
 
@@ -29,10 +27,8 @@
 @mixin grid-col($width: 100%, $align: stretch, $grid-gutter: $gutter) {
   flex: none;
   align-self: $align;
-
   padding-left: $grid-gutter/2;
   padding-right: $grid-gutter/2;
-
   width: convertify($width);
 }
 

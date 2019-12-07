@@ -2,13 +2,9 @@
 
 .link {
   display: flex;
-
   margin-left: 40px;
-
   text-decoration: none;
-
   color: #404040;
-
   transition: 200ms opacity ease-in-out;
 
   &:first-of-type {
@@ -21,7 +17,6 @@
 
   &__icon {
     position: relative;
-
     margin-right: 8px;
 
     path { // stylelint-disable-line

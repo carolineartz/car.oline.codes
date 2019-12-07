@@ -6,25 +6,18 @@ $btn-border-width: 2px;
 .button {
   display: inline-flex;
   position: relative;
-
   padding: 0 $gutter;
-
   height: $btn-height;
-
   border: $btn-border-width solid transparent;
   border-radius: $btn-border-width;
-
   cursor: pointer;
-
   font-size: $font-size;
   line-height: ($btn-height - 2 * $btn-border-width);
   vertical-align: middle;
   text-align: center;
   text-decoration: none;
-
   background-color: #000;
   color: #fff;
-
   transition: 180ms;
   transition-property: border-color, background-color, color, opacity;
 
@@ -43,7 +36,6 @@ $btn-border-width: 2px;
 
   &.disabled {
     cursor: default;
-
     background-color: #bbb;
   }
 }

@@ -1,11 +1,10 @@
 @import '~styles/config';
 
-:global {
+:global { // stylelint-disable-line
   @import '~styles/base';
 }
 
 .layout {
   display: block;
-
   min-height: 100vh;
 }

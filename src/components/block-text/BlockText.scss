@@ -19,7 +19,6 @@
     @include rf(16, 18);
 
     margin-bottom: 10px;
-
     font-family: $font-heading;
   }
 
@@ -32,9 +31,7 @@
     a { // stylelint-disable-line
       text-decoration: none;
       font-weight: 400;
-
       color: #000;
-
       transition: 200ms opacity ease-in-out;
 
       &:hover { // stylelint-disable-line

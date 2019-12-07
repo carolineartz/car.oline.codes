@@ -31,7 +31,6 @@
 html,
 body {
   min-height: 100vh;
-
   background-color: $color-background;
 }
 
@@ -39,10 +38,8 @@ html {
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: scroll; // always show the vertical scrollbar so that content doesn't jump
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   box-sizing: border-box;
 }
 
@@ -57,13 +54,10 @@ body {
   @include responsive-font($font-size-min, $font-size);
 
   position: relative;
-
   margin: 0;
-
   font-family: $font-family;
   line-height: $line-height;
   text-size-adjust: 100%; // iOS on orientation change
-
   color: $color-font;
 }
 

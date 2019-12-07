@@ -30,18 +30,18 @@
   font-size: #{$unitless-min}px;
 
   @if $scale-font-enable == true {
-    font-size: calc(#{$unitless-min}px * #{var(--scale-font)});
+    font-size: calc(#{$unitless-min}px * #{var(--scale-font)}); // stylelint-disable-line
   }
 
   @media (min-width: $min-mobile) {
     font-size: #{$unitless-min}px;
 
     @if $scale-font-enable == true {
-      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)) * #{var(--scale-font)});
+      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)) * #{var(--scale-font)}); // stylelint-disable-line
     }
 
     @else {
-      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)));
+      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px))); // stylelint-disable-line
     }
   }
 
@@ -49,7 +49,7 @@
     font-size: #{$unitless-size}px;
 
     @if $scale-font-enable == true {
-      font-size: calc(#{$unitless-size}px * #{var(--scale-font)});
+      font-size: calc(#{$unitless-size}px * #{var(--scale-font)}); // stylelint-disable-line
     }
   }
 }
@@ -99,11 +99,9 @@
 
 @mixin container() {
   flex-grow: 1;
-
   margin: 0 auto;
   padding-left: $container-gutter-mobile;
   padding-right: $container-gutter-mobile;
-
   max-width: $page-width + $container-gutter-mobile;
 
   @media (min-width: $min-mobile) {
@@ -124,13 +122,13 @@
 }
 
 @mixin js-only {
-  html:not(:global(.no-js)) & {
+  html:not(:global(.no-js)) & { // stylelint-disable-line
     @content;
   }
 }
 
 @mixin no-js {
-  html:not(:global(.js)) & {
+  html:not(:global(.js)) & { // stylelint-disable-line
     @content;
   }
 }

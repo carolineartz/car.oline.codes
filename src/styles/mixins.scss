@@ -1,3 +1,4 @@
+// stylelint-disable function-calc-no-invalid
 @mixin fit {
   position: absolute;
   top: 0;
@@ -30,18 +31,21 @@
   font-size: #{$unitless-min}px;
 
   @if $scale-font-enable == true {
-    font-size: calc(#{$unitless-min}px * #{var(--scale-font)}); // stylelint-disable-line
+    font-size: calc(#{$unitless-min}px * #{var(--scale-font)});
   }
 
   @media (min-width: $min-mobile) {
     font-size: #{$unitless-min}px;
 
     @if $scale-font-enable == true {
-      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)) * #{var(--scale-font)}); // stylelint-disable-line
+      font-size:
+        calc(
+          (#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)) * #{var(--scale-font)}
+        );
     }
 
     @else {
-      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px))); // stylelint-disable-line
+      font-size: calc((#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)));
     }
   }
 
@@ -49,7 +53,7 @@
     font-size: #{$unitless-size}px;
 
     @if $scale-font-enable == true {
-      font-size: calc(#{$unitless-size}px * #{var(--scale-font)}); // stylelint-disable-line
+      font-size: calc(#{$unitless-size}px * #{var(--scale-font)});
     }
   }
 }
@@ -74,7 +78,8 @@
   $padding-top: $segment-padding,
   $padding-bottom: $segment-padding,
   $padding-top-mobile: $segment-padding-mobile,
-  $padding-bottom-mobile: $segment-padding-mobile) {
+  $padding-bottom-mobile: $segment-padding-mobile
+) {
   flex-grow: 1;
 
   // Set up unitless values
@@ -87,8 +92,14 @@
   @include vertically-responsive(padding-bottom, $padding-bottom-mobile-unitless * 1px);
 
   @media (min-width: $min-tablet) {
-    @include vertically-responsive(padding-top, percentage(($padding-top-unitless * 1px) / $page-limit));
-    @include vertically-responsive(padding-bottom, percentage(($padding-bottom-unitless * 1px) / $page-limit));
+    @include vertically-responsive(
+      padding-top,
+      percentage(($padding-top-unitless * 1px) / $page-limit)
+    );
+    @include vertically-responsive(
+      padding-bottom,
+      percentage(($padding-bottom-unitless * 1px) / $page-limit)
+    );
   }
 
   @media (min-width: $page-limit) {
@@ -122,13 +133,13 @@
 }
 
 @mixin js-only {
-  html:not(:global(.no-js)) & { // stylelint-disable-line
+  html:not(:global(.no-js)) & {
     @content;
   }
 }
 
 @mixin no-js {
-  html:not(:global(.js)) & { // stylelint-disable-line
+  html:not(:global(.js)) & {
     @content;
   }
 }
@@ -157,3 +168,4 @@
     }
   }
 }
+// stylelint-enable function-calc-no-invalid

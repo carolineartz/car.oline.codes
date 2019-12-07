@@ -22,22 +22,14 @@ interface IAppLayoutProps {
 }
 
 const isDev = process.env.NODE_ENV === 'development';
-
-export default ({ children }: IAppLayoutProps) => (
+const AppLayout = ({ children }: IAppLayoutProps) => (
   <div className={s.layout}>
     <Helmet {...helmet} />
 
     <Header>
-      <HeaderLink
-        name="about"
-        to="/about"
-      />
+      <HeaderLink name="about" to="/about" />
 
-      <HeaderLink
-        name="github"
-        to="https://github.com/ueno-llc"
-        icon={<Github />}
-      />
+      <HeaderLink name="github" to="https://github.com/ueno-llc" icon={<Github />} />
     </Header>
 
     {children}
@@ -57,3 +49,5 @@ export default ({ children }: IAppLayoutProps) => (
     {isDev && <Devtools />}
   </div>
 );
+
+export default AppLayout;

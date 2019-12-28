@@ -19,8 +19,10 @@ $font-size-min: 13px;
 $line-height: 1.5;
 
 // Colors
+$purple: #8d0071;
+
 $color-font: #333;
-$color-background: #fff;
+$color-background:$purple;
 $color-placeholder: #ddd;
 
 // Timings
@@ -81,3 +83,6 @@ $scale: (
   (800px, 0.95),
   (690px, 0.925),
 );
+
+
+

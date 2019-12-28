@@ -4,6 +4,9 @@ import Helmet from 'react-helmet';
 import { Intro } from 'components/intro/Intro';
 import { BlockText } from 'components/block-text/BlockText';
 import BongoCat from 'assets/svg/bongo-cat.svg';
+import WaveHello from 'assets/svg/hello.svg';
+import { Logo } from 'components/logo/Logo';
+import { Row } from 'components/row/Row';
 
 export default () => {
   return (
@@ -11,7 +14,15 @@ export default () => {
       <Helmet title="Home" />
 
       <Intro>
-        <BongoCat />
+        <Row>
+          <WaveHello />
+        </Row>
+        <Row>
+          <Logo />
+        </Row>
+        <Row>
+          <BongoCat />
+        </Row>
       </Intro>
 
       <BlockText

@@ -45,6 +45,7 @@ export class Logo extends PureComponent {
       transformOrigin: '90% 90%',
       rotation: 20,
     });
+
     return this.waveTimeline.to('#hand', { rotation: -2 }).to('#hand', { rotation: 15 });
   };
 

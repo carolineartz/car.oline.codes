@@ -2,30 +2,33 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 
 import { Intro } from 'components/intro/Intro';
-import { BlockText } from 'components/block-text/BlockText';
+import { Container } from 'components/container/Container';
 import BongoCat from 'assets/svg/bongo-cat.svg';
-import WaveHello from 'assets/svg/hello.svg';
-import { Logo } from 'components/logo/Logo';
-import { Row } from 'components/row/Row';
+// import { BlockText } from 'components/block-text/BlockText';
+
+// import { Logo } from 'components/logo/Logo';
+// import { Row } from 'components/row/Row';
 
 export default () => {
   return (
     <>
       <Helmet title="Home" />
 
-      <Intro>
-        <Row>
+      <Intro />
+      <Container>
+        <BongoCat />
+      </Container>
+      {/* <Row>
           <WaveHello />
         </Row>
         <Row>
           <Logo />
         </Row>
         <Row>
-          <BongoCat />
         </Row>
-      </Intro>
+      </Intro> */}
 
-      <BlockText
+      {/* <BlockText
         heading="Who we are"
         description={
           <>
@@ -37,7 +40,7 @@ export default () => {
             .
           </>
         }
-      />
+      /> */}
     </>
   );
 };

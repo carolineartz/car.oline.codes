@@ -96,3 +96,7 @@ select {
     color: $color-placeholder;
   }
 }
+
+svg {
+  overflow: visible;
+}

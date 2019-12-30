@@ -7,12 +7,6 @@ export const HELLO_TEXT = '#intro-text__hello-there';
 const waveDuration = 0.1;
 const waves = 3;
 
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/no-unused-vars */
-const DrawSVGPlugin = require('gsap/DrawSVGPlugin');
-const CustomEase = require('gsap/CustomEase').CustomEease;
-const CustomBounce = require('gsap/CustomBounce').CustomBounce;
-/* eslint-enable @typescript-eslint/no-var-requires, @typescript-eslint/no-unused-vars */
-
 const GreetTimeline = (): GSAPStatic.Timeline => {
   gsap.set(HAND_CONTAINER, {
     scale: 0.8,

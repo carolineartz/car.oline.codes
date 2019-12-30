@@ -1,11 +1,5 @@
 import { gsap } from 'gsap';
 
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/no-unused-vars */
-// require('gsap/DrawSVGPlugin');
-// const CustomEase = require('gsap/CustomEase').CustomEease;
-// const CustomBounce = require('gsap/CustomBounce').CustomBounce;
-/* eslint-enable @typescript-eslint/no-var-requires, @typescript-eslint/no-unused-vars */
-
 const LOGO_PATH = '#caroline-logo .path';
 const DOT_GROUP = '.dot-group';
 const DOT = '#dot';

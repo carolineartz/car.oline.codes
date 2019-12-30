@@ -1,22 +1,8 @@
 import React, { PureComponent } from 'react';
 import { gsap } from 'gsap';
-const CustomBounce = require('gsap/CustomBounce').CustomBounce;
-const CustomEase = require('gsap/CustomEase').CustomEease;
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('gsap/DrawSVGPlugin');
-
-(window as any).gsap = gsap;
-
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/no-unused-vars */
-// const DrawSVGPlugin = require('gsap/DrawSVGPlugin');
-// const CustomBounce = require('gsap/CustomBounce').CustomBounce;
-// import CustomBounce from 'gsap/CustomBounce';
-// debugger;
-/* eslint-enable @typescript-eslint/no-var-requires, @typescript-eslint/no-unused-vars */
 
 import { Container } from 'components/container/Container';
 import { Box } from 'components/box/Box';
-
 import { Row } from 'components/row/Row';
 
 import Caroline from 'assets/svg/caroline.svg';
@@ -27,14 +13,26 @@ import s from './Intro.scss';
 import greet from './../../animation/GreetTimeline';
 import introduce from './../../animation/IntroduceTimeline';
 
+(window as any).gsap = gsap;
+
+/* eslint-disable @typescript-eslint/no-var-requires */
+const DrawSVGPlugin = require('gsap/DrawSVGPlugin');
+const CustomEase = require('gsap/CustomEase');
+const CustomBounce = require('gsap/CustomBounce');
+/* eslint-enable @typescript-eslint/no-var-requires */
+
 export class Intro extends PureComponent {
+  constructor(props: any) {
+    super(props);
+    (gsap as any).registerPlugin(CustomEase, CustomBounce, DrawSVGPlugin);
+  }
+
   componentDidMount() {
     this.animate();
   }
 
   animate = () => {
-    (gsap as any).registerPlugin(CustomEase, CustomBounce);
-    CustomBounce.create('myBounce', { strength: 0.6, squash: 2 });
+    CustomBounce.CustomBounce.create('myBounce', { strength: 0.6, squash: 2 });
 
     gsap
       .timeline()
@@ -68,15 +66,3 @@ export class Intro extends PureComponent {
     );
   }
 }
-
-// export const Intro = ({ children }: IIntroProps) => {
-//   return (
-//     <Container>
-//       <div className={s.intro}>
-//         <Row></Row>
-//       </div>
-//     </Container>
-//   );
-// };
-
-// {/* <div className={s.intro__col}>{children}</div> */}

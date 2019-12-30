@@ -1,30 +1,5 @@
 @import '~styles/config';
 
-.intro {
-  padding: 60px 0;
-  border-bottom: 1px solid #e5e5e5;
-  background: #8d0071;
-
-  @media (min-width: $min-768) {
-    padding: 120px 0;
-  }
-
-  // &__col {
-  //   @include grid-col;
-
-  //   @media (min-width: $min-768) {
-  //     @include grid-col(7);
-  //   }
-  // }
-
-  // &__text {
-  //   @include rf(26, 32);
-
-  //   font-family: $font-heading;
-  //   font-weight: 300;
-  // }
-}
-
 .greeting {
   &__hand {
     @include grid-col(5);
@@ -62,19 +37,3 @@
 .cat {
   @include grid-col(12);
 }
-
-// .logo {
-//   &__container {
-//     min-height: 50vh;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//   }
-
-//   &__graphic {
-//     width: 90vw;
-//     max-height: 60vh;
-//     overflow: visible;
-//     transform: translateY(-20%);
-//   }
-// }

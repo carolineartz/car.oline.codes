@@ -2,7 +2,7 @@
 
 .greeting {
   &__hand {
-    @include grid-col(5);
+    @include grid-col(4);
 
     svg {
       max-width: 20vw;
@@ -10,7 +10,7 @@
   }
 
   &__text {
-    @include grid-col(7);
+    @include grid-col(8);
     @include rf(36, 102);
 
     font-family: Monique, monospace;
@@ -21,8 +21,8 @@
 
 .introduction {
   &__text {
-    @include grid-col(8);
-    @include grid-offset-left(4);
+    @include grid-col(9);
+    @include grid-offset-left(3);
     @include rf(36, 82);
 
     font-family: Monique, monospace;

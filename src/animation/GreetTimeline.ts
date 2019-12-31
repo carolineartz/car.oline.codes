@@ -16,10 +16,11 @@ const GreetTimeline = (): GSAPStatic.Timeline => {
   gsap.set(HAND, {
     transformOrigin: '90% 90%',
     rotation: 20,
+    y: 10
   });
 
   const fadeInText = (): GSAPStatic.Timeline =>
-    gsap.timeline().to(HELLO_TEXT, { autoAlpha: 1, duration: 0.25, ease: 'power1.in' });
+    gsap.timeline().to(HELLO_TEXT, { autoAlpha: 1, duration: 0.25, ease: 'none' });
 
   const hand = (): GSAPStatic.Timeline =>
     gsap

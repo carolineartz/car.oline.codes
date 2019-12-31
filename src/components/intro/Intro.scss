@@ -14,19 +14,19 @@
     @include rf(36, 102);
 
     font-family: Monique, monospace;
-    color: #ed5a7e;
+    color: #bb9cd8;
     align-self: center;
   }
 }
 
 .introduction {
   &__text {
-    @include grid-col(7);
-    @include grid-offset-left(5);
+    @include grid-col(8);
+    @include grid-offset-left(4);
     @include rf(36, 82);
 
     font-family: Monique, monospace;
-    color: #ed5a7e;
+    color: #bb9cd8;
   }
 
   &__name {

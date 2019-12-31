@@ -34,8 +34,8 @@ const IntroduceTimeline = (): GSAPStatic.Timeline => {
       .to('.e2Path', { duration: 0.2, stagger: 0.07, ...drawSVGLinear }, '-=0.10')
       .from(DOT, 0.01, { autoAlpha: 0 }, '-=0.03')
       .to(DOT, 0.4, { yPercent: -500, ease: 'power4.out' }, '-=0.01')
-      .to(DOT_GROUP, 0.4, { scale: 1.1, ease: 'power4.out' }, '-=0.4')
-      .to(DOT, 0.9, { yPercent: -150, ease: 'myBounce' })
+      .to(DOT_GROUP, 0.4, { scale: 1.0, ease: 'power4.out' }, '-=0.4')
+      .to(DOT, 0.9, { yPercent: -100, ease: 'myBounce' })
       .to(DOT, 0.9, {
         scaleY: 0.6,
         scaleX: 1.2,

@@ -11,9 +11,10 @@ const IntroduceTimeline = (): GSAPStatic.Timeline => {
   gsap.set(LOGO_PATH, { drawSVG: '0% 0%' });
   gsap.set(DOT_GROUP, { yPercent: 100 });
   gsap.set(COMPOUND_PATH, { autoAlpha: 0 });
+  gsap.set(INTRO_TEXT, { autoAlpha: 0 });
 
   const fadeInText = (): GSAPStatic.Timeline =>
-    gsap.timeline().to(INTRO_TEXT, { autoAlpha: 1, duration: 0.25, ease: 'power1.in' });
+    gsap.timeline({delay: 0.5}).to(INTRO_TEXT, { autoAlpha: 1, duration: 0.25, ease: 'none' });
 
   const shimmer = (): GSAPStatic.Timeline =>
     gsap

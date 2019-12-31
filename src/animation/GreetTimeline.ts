@@ -24,7 +24,6 @@ const GreetTimeline = (): GSAPStatic.Timeline => {
   const hand = (): GSAPStatic.Timeline =>
     gsap
       .timeline({
-        delay: 1,
         repeat: waves,
         defaults: { ease: 'power2.inOut', duration: waveDuration },
       })
@@ -33,13 +32,13 @@ const GreetTimeline = (): GSAPStatic.Timeline => {
 
   const waveHello = (): GSAPStatic.Timeline =>
     gsap
-      .timeline()
-      .to(HAND_CONTAINER, { scale: 1.2 })
+      .timeline({delay: 0.5})
+      .to(HAND_CONTAINER, { duration: 0.2, ease: 'circ', scale: 1.2 })
       .add(hand())
-      .to(HAND_CONTAINER, { scale: 0.8 }, `+=${waves * waveDuration + 0.15}`);
+      .to(HAND_CONTAINER, { duration: 0.1, ease: 'none', scale: 0.8 }, `+=${waves * waveDuration + 0.15}`);
 
   return gsap
-    .timeline({ delay: 0.5, defaults: { ease: 'power2.inOut', duration: 0.25 } })
+    .timeline({ defaults: { ease: 'power2.in', duration: 0.25 } })
     .add(fadeInText())
     .add(waveHello());
 };

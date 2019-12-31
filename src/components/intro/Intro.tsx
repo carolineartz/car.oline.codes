@@ -37,7 +37,7 @@ export class Intro extends PureComponent {
     gsap
       .timeline()
       .add(greet())
-      .add(introduce());
+      .add(introduce(), '-=0.5');
   };
 
   render() {

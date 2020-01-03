@@ -1,5 +1,20 @@
 @import '~styles/config';
 
+.text {
+  @include rf(36, 80);
+
+  color: #bb9cd8;
+  font-family: Monique, monospace;
+
+  &.small {
+    @include rf(16, 50);
+  }
+
+  &.large {
+    @include rf(36, 120);
+  }
+}
+
 .greeting {
   &__hand {
     @include grid-col(4);
@@ -11,10 +26,7 @@
 
   &__text {
     @include grid-col(8);
-    @include rf(36, 102);
 
-    font-family: Monique, monospace;
-    color: #bb9cd8;
     align-self: center;
   }
 }
@@ -23,10 +35,6 @@
   &__text {
     @include grid-col(9);
     @include grid-offset-left(3);
-    @include rf(36, 82);
-
-    font-family: Monique, monospace;
-    color: #bb9cd8;
   }
 
   &__name {
@@ -34,6 +42,20 @@
   }
 }
 
-.cat {
-  @include grid-col(12);
+.projects {
+  &__text {
+    @include grid-col(5)
+  }
+
+  &__cat {
+    @include grid-col(7)
+  }
 }
+
+// .cat {
+//   @include grid-col(12);
+// }
+
+// .splash {
+//   height: 100vh;
+// }

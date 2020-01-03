@@ -4,8 +4,9 @@ import s from './Container.scss';
 
 interface IContainerProps {
   children: React.ReactNode;
+  id?: string
 }
 
-export const Container = ({ children }: IContainerProps) => (
-  <section className={s.container}>{children}</section>
+export const Container = ({ children, id }: IContainerProps) => (
+  <section id={id} className={s.container}>{children}</section>
 );

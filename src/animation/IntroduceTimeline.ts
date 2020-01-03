@@ -21,26 +21,17 @@ const IntroduceTimeline = (): GSAPStatic.Timeline => {
       .timeline({repeat: -1, duration: 2.0, repeatDelay: 1.3, yoyo: true })
       .addLabel('o')
       .from('#rainbow', {attr: {cx: '50%'}, duration: 1.7}, 'o')
-      // .to('#rainbow', {attr: {cy: '100%'}, duration: 2.5}, 'o')
       .from('#rainbow', {attr: {r: '45%'}, duration: 1.8}, 'o-=0.5')
       .to('#rainbox-offset3', { attr: { offset: '70%' } }, 'o-=0.3')
       .to('#rainbox-offset2', { attr: { offset: '60%' } }, 'o')
       .to('#rainbox-offset3', { attr: { offset: '80%' } }, '<')
-      // .fromTo(
-      //   "#rainbow",
-      //   { attr: { 'gradientTransform': 'rotate(10)' }, immediateRender: false },
-      //   { attr: { 'gradientTransform': 'rotate(40)' } },
-      //   'o-=0.5'
-      // )
-      // .to("#rainbox", { attr: {'gradentTransform': 'rotate(-30)'}})
-      // .to
-      // .to('#rainbow', )
 
   const drawName = (): GSAPStatic.Timeline => {
     const drawSVGLinear = { drawSVG: '100%', ease: 'none' };
 
     return gsap
       .timeline({ delay: 1, defaults: { ease: 'power4.out' } })
+      .timeScale(1.6)
       .set('.logo', { autoAlpha: 1 })
       .to('.cPath', { duration: 0.5, stagger: 0.2, ...drawSVGLinear })
       .to('.a1Path', { duration: 0.25, stagger: 0.2, ...drawSVGLinear }, '-=0.35')
@@ -72,7 +63,6 @@ const IntroduceTimeline = (): GSAPStatic.Timeline => {
       .to(DOT_GROUP, { duration: 1.5, autoAlpha: 0, ease: 'none' }, 'dot')
       .to('.path', { duration: 0.8, stagger: 0.03, autoAlpha: 0, ease: 'none' }, 'dot')
       .add(shimmer(), '<')
-      // .from('#strokes2 path', { drawSVG: '100%', stagger: 0.07 })
   };
 
   return gsap

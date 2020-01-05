@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400');
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  49% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+$type-format-map: (
+  eot: 'embedded-opentype',
+  woff2: 'woff2',
+  woff: 'woff',
+  ttf: 'truetype',
+  otf: 'opentype',
+  svg: 'svg'
+);
+
+$font-path: "./../../assets/fonts/";
+
+@function font-src($name, $type: null) {
+  @if $type {
+    @return url(#{$font-path}#{$name}.#{$type}) format(map-get($type-format-map, $type));
+  }
+  @else {
+    @return (
+      (url(#{$font-path}#{$name}.eot?#iefix) format(map-get($type-format-map, eot))),
+      (url(#{$font-path}#{$name}.woff2) format(map-get($type-format-map, woff2))),
+      (url(#{$font-path}#{$name}.woff) format(map-get($type-format-map, woff))),
+      (url(#{$font-path}#{$name}.ttf) format(map-get($type-format-map, ttf))),
+      (url(#{$font-path}#{$name}.svg##{$name}) format(map-get($type-format-map, svg)))
+    );
+  }
+}
+
+
+@font-face {
+  font-family: 'Antonio';
+  src: font-src('Antonio-Light', 'eot');
+  src: font-src('Antonio-Light');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Antonio';
+  src: font-src('Antonio-Regular', 'eot');
+  src: font-src('Antonio-Regular');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Antonio';
+  src: font-src('Antonio-Bold', 'eot');
+  src: font-src('Antonio-Bold');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+// ***********************************
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-Thin', 'eot');
+  src: font-src('GTAmericaMono-Thin');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-MediumItalic', 'eot');
+  src: font-src('GTAmericaMono-MediumItalic');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-Light', 'eot');
+  src: font-src('GTAmericaMono-Light');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-Medium', 'eot');
+  src: font-src('GTAmericaMono-Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-Regular', 'eot');
+  src: font-src('GTAmericaMono-Regular');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-Bold', 'eot');
+  src: font-src('GTAmericaMono-Bold');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-BoldItalic', 'eot');
+  src: font-src('GTAmericaMono-BoldItalic');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-Black', 'eot');
+  src: font-src('GTAmericaMono-Black');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-LightItalic', 'eot');
+  src: font-src('GTAmericaMono-LightItalic');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono Ultra';
+  src: font-src('GTAmericaMono-UltraLightItalic', 'eot');
+  src: font-src('GTAmericaMono-UltraLightItalic');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-BlackItalic', 'eot');
+  src: font-src('GTAmericaMono-BlackItalic');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono Ultra';
+  src: font-src('GTAmericaMono-UltraLight', 'eot');
+  src: font-src('GTAmericaMono-UltraLight');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-ThinItalic', 'eot');
+  src: font-src('GTAmericaMono-ThinItalic');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono';
+  src: font-src('GTAmericaMono-RegularItalic', 'eot');
+  src: font-src('GTAmericaMono-RegularItalic');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+

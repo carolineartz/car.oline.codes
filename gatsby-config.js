@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
 module.exports = {
@@ -16,7 +17,9 @@ module.exports = {
         name: 'ueno-gatsby-starter',
         short_name: 'starter',
         start_url: '/',
+        // eslint-disable-next-line @typescript-eslint/camelcase
         background_color: '#663399',
+        // eslint-disable-next-line @typescript-eslint/camelcase
         theme_color: '#663399',
         display: 'minimal-ui',
         icon: 'src/assets/images/favicon.png',
@@ -36,5 +39,12 @@ module.exports = {
         component: require.resolve('./src/components/app-layout/AppLayout.tsx'),
       },
     },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     name: 'fonts',
+    //     path: `${__dirname}/src/assets/fonts/`,
+    //   },
+    // },
   ],
-}
+};

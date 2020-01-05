@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
 
+import Shapes from 'assets/svg/shapes.svg';
 import Logo from 'assets/svg/ueno-logo.svg';
 import Dribbble from 'assets/svg/dribbble.svg';
 import Twitter from 'assets/svg/twitter.svg';
@@ -47,6 +48,7 @@ const AppLayout = ({ children }: IAppLayoutProps) => (
     />
 
     {isDev && <Devtools />}
+    <Shapes />
   </div>
 );
 

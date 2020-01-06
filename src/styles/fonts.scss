@@ -23,7 +23,7 @@ $type-format-map: (
   svg: 'svg'
 );
 
-$font-path: "./../../assets/fonts/";
+$font-path: "./../../static/fonts/";
 
 @function font-src($name, $type: null) {
   @if $type {

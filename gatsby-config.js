@@ -6,16 +6,18 @@ module.exports = {
     title: 'Ueno Gatsby Starter',
   },
   plugins: [
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-ueno',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'ueno-gatsby-starter',
+        // eslint-disable-next-line @typescript-eslint/camelcase
         short_name: 'starter',
+        // eslint-disable-next-line @typescript-eslint/camelcase
         start_url: '/',
         // eslint-disable-next-line @typescript-eslint/camelcase
         background_color: '#663399',
@@ -39,12 +41,12 @@ module.exports = {
         component: require.resolve('./src/components/app-layout/AppLayout.tsx'),
       },
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     name: 'fonts',
-    //     path: `${__dirname}/src/assets/fonts/`,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'fonts',
+        path: `${__dirname}/src/fonts/`,
+      },
+    },
   ],
 };

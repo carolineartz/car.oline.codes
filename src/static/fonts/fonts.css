@@ -1,0 +1,349 @@
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400');
+
+// @keyframes blink {
+//   0% {
+//     opacity: 0;
+//   }
+
+//   49% {
+//     opacity: 0;
+//   }
+
+//   50% {
+//     opacity: 1;
+//   }
+// }
+
+// $type-format-map: (
+//   eot: 'embedded-opentype',
+//   woff2: 'woff2',
+//   woff: 'woff',
+//   ttf: 'truetype',
+//   otf: 'opentype',
+//   svg: 'svg'
+// );
+
+// $font-path: "";
+
+// @function font-src($name, $type: null) {
+//   @if $type {
+//     @return url(#{$font-path}#{$name}.#{$type}) format(map-get($type-format-map, $type));
+//   }
+//   @else {
+//     @return (
+//       (url(#{$font-path}#{$name}.eot?#iefix) format(map-get($type-format-map, eot))),
+//       (url(#{$font-path}#{$name}.woff2) format(map-get($type-format-map, woff2))),
+//       (url(#{$font-path}#{$name}.woff) format(map-get($type-format-map, woff))),
+//       (url(#{$font-path}#{$name}.ttf) format(map-get($type-format-map, ttf))),
+//       (url(#{$font-path}#{$name}.svg##{$name}) format(map-get($type-format-map, svg)))
+//     );
+//   }
+// }
+
+
+// @font-face {
+//   font-family: 'Antonio';
+//   src: font-src('Antonio-Light', 'eot');
+//   src: font-src('Antonio-Light');
+//   font-weight: 300;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'Antonio';
+//   src: font-src('Antonio-Regular', 'eot');
+//   src: font-src('Antonio-Regular');
+//   font-weight: normal;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'Antonio';
+//   src: font-src('Antonio-Bold', 'eot');
+//   src: font-src('Antonio-Bold');
+//   font-weight: bold;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+
+// // ***********************************
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-Thin', 'eot');
+//   src: font-src('GTAmericaMono-Thin');
+//   font-weight: 100;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-MediumItalic', 'eot');
+//   src: font-src('GTAmericaMono-MediumItalic');
+//   font-weight: 500;
+//   font-style: italic;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-Light', 'eot');
+//   src: font-src('GTAmericaMono-Light');
+//   font-weight: 300;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-Medium', 'eot');
+//   src: font-src('GTAmericaMono-Medium');
+//   font-weight: 500;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-Regular', 'eot');
+//   src: font-src('GTAmericaMono-Regular');
+//   font-weight: normal;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-Bold', 'eot');
+//   src: font-src('GTAmericaMono-Bold');
+//   font-weight: bold;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-BoldItalic', 'eot');
+//   src: font-src('GTAmericaMono-BoldItalic');
+//   font-weight: bold;
+//   font-style: italic;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-Black', 'eot');
+//   src: font-src('GTAmericaMono-Black');
+//   font-weight: 900;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-LightItalic', 'eot');
+//   src: font-src('GTAmericaMono-LightItalic');
+//   font-weight: 300;
+//   font-style: italic;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono Ultra';
+//   src: font-src('GTAmericaMono-UltraLightItalic', 'eot');
+//   src: font-src('GTAmericaMono-UltraLightItalic');
+//   font-weight: 200;
+//   font-style: italic;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-BlackItalic', 'eot');
+//   src: font-src('GTAmericaMono-BlackItalic');
+//   font-weight: 900;
+//   font-style: italic;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono Ultra';
+//   src: font-src('GTAmericaMono-UltraLight', 'eot');
+//   src: font-src('GTAmericaMono-UltraLight');
+//   font-weight: 200;
+//   font-style: normal;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-ThinItalic', 'eot');
+//   src: font-src('GTAmericaMono-ThinItalic');
+//   font-weight: 100;
+//   font-style: italic;
+/* //   font-display: swap; */
+// }
+
+// @font-face {
+//   font-family: 'GT America Mono';
+//   src: font-src('GTAmericaMono-RegularItalic', 'eot');
+//   src: font-src('GTAmericaMono-RegularItalic');
+//   font-weight: normal;
+//   font-style: italic;
+/* //   font-display: swap; */
+// }
+
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400");
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@font-face {
+  font-family: "Antonio";
+  src: url(Antonio-Light.eot) format("embedded-opentype");
+  src: url(Antonio-Light.eot?#iefix) format("embedded-opentype"), url(Antonio-Light.woff2) format("woff2"), url(Antonio-Light.woff) format("woff"), url(Antonio-Light.ttf) format("truetype"), url(Antonio-Light.svg#Antonio-Light) format("svg");
+  font-weight: 300;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "Antonio";
+  src: url(Antonio-Regular.eot) format("embedded-opentype");
+  src: url(Antonio-Regular.eot?#iefix) format("embedded-opentype"), url(Antonio-Regular.woff2) format("woff2"), url(Antonio-Regular.woff) format("woff"), url(Antonio-Regular.ttf) format("truetype"), url(Antonio-Regular.svg#Antonio-Regular) format("svg");
+  font-weight: normal;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "Antonio";
+  src: url(Antonio-Bold.eot) format("embedded-opentype");
+  src: url(Antonio-Bold.eot?#iefix) format("embedded-opentype"), url(Antonio-Bold.woff2) format("woff2"), url(Antonio-Bold.woff) format("woff"), url(Antonio-Bold.ttf) format("truetype"), url(Antonio-Bold.svg#Antonio-Bold) format("svg");
+  font-weight: bold;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-Thin.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-Thin.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-Thin.woff2) format("woff2"), url(GTAmericaMono-Thin.woff) format("woff"), url(GTAmericaMono-Thin.ttf) format("truetype"), url(GTAmericaMono-Thin.svg#GTAmericaMono-Thin) format("svg");
+  font-weight: 100;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-MediumItalic.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-MediumItalic.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-MediumItalic.woff2) format("woff2"), url(GTAmericaMono-MediumItalic.woff) format("woff"), url(GTAmericaMono-MediumItalic.ttf) format("truetype"), url(GTAmericaMono-MediumItalic.svg#GTAmericaMono-MediumItalic) format("svg");
+  font-weight: 500;
+  font-style: italic;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-Light.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-Light.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-Light.woff2) format("woff2"), url(GTAmericaMono-Light.woff) format("woff"), url(GTAmericaMono-Light.ttf) format("truetype"), url(GTAmericaMono-Light.svg#GTAmericaMono-Light) format("svg");
+  font-weight: 300;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-Medium.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-Medium.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-Medium.woff2) format("woff2"), url(GTAmericaMono-Medium.woff) format("woff"), url(GTAmericaMono-Medium.ttf) format("truetype"), url(GTAmericaMono-Medium.svg#GTAmericaMono-Medium) format("svg");
+  font-weight: 500;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-Regular.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-Regular.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-Regular.woff2) format("woff2"), url(GTAmericaMono-Regular.woff) format("woff"), url(GTAmericaMono-Regular.ttf) format("truetype"), url(GTAmericaMono-Regular.svg#GTAmericaMono-Regular) format("svg");
+  font-weight: normal;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-Bold.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-Bold.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-Bold.woff2) format("woff2"), url(GTAmericaMono-Bold.woff) format("woff"), url(GTAmericaMono-Bold.ttf) format("truetype"), url(GTAmericaMono-Bold.svg#GTAmericaMono-Bold) format("svg");
+  font-weight: bold;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-BoldItalic.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-BoldItalic.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-BoldItalic.woff2) format("woff2"), url(GTAmericaMono-BoldItalic.woff) format("woff"), url(GTAmericaMono-BoldItalic.ttf) format("truetype"), url(GTAmericaMono-BoldItalic.svg#GTAmericaMono-BoldItalic) format("svg");
+  font-weight: bold;
+  font-style: italic;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-Black.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-Black.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-Black.woff2) format("woff2"), url(GTAmericaMono-Black.woff) format("woff"), url(GTAmericaMono-Black.ttf) format("truetype"), url(GTAmericaMono-Black.svg#GTAmericaMono-Black) format("svg");
+  font-weight: 900;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-LightItalic.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-LightItalic.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-LightItalic.woff2) format("woff2"), url(GTAmericaMono-LightItalic.woff) format("woff"), url(GTAmericaMono-LightItalic.ttf) format("truetype"), url(GTAmericaMono-LightItalic.svg#GTAmericaMono-LightItalic) format("svg");
+  font-weight: 300;
+  font-style: italic;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono Ultra";
+  src: url(GTAmericaMono-UltraLightItalic.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-UltraLightItalic.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-UltraLightItalic.woff2) format("woff2"), url(GTAmericaMono-UltraLightItalic.woff) format("woff"), url(GTAmericaMono-UltraLightItalic.ttf) format("truetype"), url(GTAmericaMono-UltraLightItalic.svg#GTAmericaMono-UltraLightItalic) format("svg");
+  font-weight: 200;
+  font-style: italic;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-BlackItalic.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-BlackItalic.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-BlackItalic.woff2) format("woff2"), url(GTAmericaMono-BlackItalic.woff) format("woff"), url(GTAmericaMono-BlackItalic.ttf) format("truetype"), url(GTAmericaMono-BlackItalic.svg#GTAmericaMono-BlackItalic) format("svg");
+  font-weight: 900;
+  font-style: italic;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono Ultra";
+  src: url(GTAmericaMono-UltraLight.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-UltraLight.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-UltraLight.woff2) format("woff2"), url(GTAmericaMono-UltraLight.woff) format("woff"), url(GTAmericaMono-UltraLight.ttf) format("truetype"), url(GTAmericaMono-UltraLight.svg#GTAmericaMono-UltraLight) format("svg");
+  font-weight: 200;
+  font-style: normal;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-ThinItalic.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-ThinItalic.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-ThinItalic.woff2) format("woff2"), url(GTAmericaMono-ThinItalic.woff) format("woff"), url(GTAmericaMono-ThinItalic.ttf) format("truetype"), url(GTAmericaMono-ThinItalic.svg#GTAmericaMono-ThinItalic) format("svg");
+  font-weight: 100;
+  font-style: italic;
+  /* font-display: swap; */
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url(GTAmericaMono-RegularItalic.eot) format("embedded-opentype");
+  src: url(GTAmericaMono-RegularItalic.eot?#iefix) format("embedded-opentype"), url(GTAmericaMono-RegularItalic.woff2) format("woff2"), url(GTAmericaMono-RegularItalic.woff) format("woff"), url(GTAmericaMono-RegularItalic.ttf) format("truetype"), url(GTAmericaMono-RegularItalic.svg#GTAmericaMono-RegularItalic) format("svg");
+  font-weight: normal;
+  font-style: italic;
+  /* font-display: swap; */
+}
+

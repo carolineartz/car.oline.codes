@@ -43,7 +43,7 @@
     "gatsby-source-filesystem": "^2.1.43",
     "gatsby-transformer-sharp": "^2.3.9",
     "gsap": "./gsap-bonus.tgz",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "node-sass": "^4.13.0",
     "react-svg-textures": "http://github.com/carolineartz/react-svg-textures.git#master",
     "sharp": "^0.23.4"

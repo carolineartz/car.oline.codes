@@ -4,7 +4,17 @@ import { gsap } from 'gsap';
 import { Container } from 'components/container/Container';
 import { Box } from 'components/box/Box';
 import { Row } from 'components/row/Row';
-import { Text } from "components/intro/Text";
+import { Text } from 'components/intro/Text';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Circle } from 'components/svg-shape/Circle';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import { Paths } from 'react-svg-textures/build/lib';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Textures = require('react-svg-textures/umd/react-svg-textures');
+// eslint-disable-next-line no-debugger
+// debugger;
+// import { Lines, Paths, Circles } from 'react-svg-textures';
 
 import Caroline from 'assets/svg/caroline.svg';
 import Hand from 'assets/svg/hand.svg';
@@ -35,18 +45,20 @@ export class Intro extends PureComponent {
 
   animate = () => {
     CustomBounce.CustomBounce.create('myBounce', { strength: 0.6, squash: 2 });
-    gsap.set("#section-bongo-cat, #section-projects-intro", { autoAlpha: 0 });
+    gsap.set('#section-bongo-cat, #section-projects-intro', { autoAlpha: 0 });
 
     gsap
       .timeline()
       .add(greet())
       .add(introduce(), '>-3.5')
       .addLabel('projects-intro')
-      .to('#section-projects-intro', { autoAlpha: 1 }, '<4.5')
-      // .to('#section-bongo-cat', { autoAlpha: 1 }, '<0.1')
+      .to('#section-projects-intro', { autoAlpha: 1 }, '<4.5');
+    // .to('#section-bongo-cat', { autoAlpha: 1 }, '<0.1')
   };
 
   render() {
+    const pat = <Textures.Paths id="test-squiggles" d="waves" strokeWidth={2} stroke="white" />;
+
     return [
       <Container id="section-greet-intro" key="greet-intro">
         <div className={s.intro}>
@@ -61,7 +73,7 @@ export class Intro extends PureComponent {
           <Row>
             <Box id="intro-text__im" className={s.introduction__text}>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <Text>I'm</Text>
+              <Text>i'm</Text>
             </Box>
             <Box id="intro__name-container" className={s.introduction__name}>
               <Caroline />
@@ -72,13 +84,17 @@ export class Intro extends PureComponent {
       <Container id="section-projects-intro" key="projects-intro">
         <Row>
           <Box id="projects-intro__text" className={s.projects__text}>
-            <Text size='small'>and these are some things i've worked on recently</Text>
+            {
+              // eslint-disable-next-line react/no-unescaped-entities
+              <Text size="small">and these are some things i've worked on recently</Text>
+            }
           </Box>
           <Box id="projects-intro__cat" className={s.projects__cat}>
             <BongoCat />
           </Box>
         </Row>
-      </Container>
-    ]
+      </Container>,
+      <Circle fill={pat} size={200} key="test-circle" />,
+    ];
   }
 }

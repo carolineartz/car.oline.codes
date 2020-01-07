@@ -169,3 +169,28 @@
   }
 }
 // stylelint-enable function-calc-no-invalid
+
+$yellow: #f6cd6c;
+$pink: #fae6e4;
+$blue: #2062f4;
+$blue-dark: #1e30b7;
+$blue-darkest: #080d33;
+
+// $shapes: (#005ffe: 650px, #ffe5e3: 440px, #ffcc57: 270px);
+$colors: (yellow: $yellow, pink: $pink, blue: $blue, blue-dark: $blue-dark, blue-darkest: $blue-darkest);
+
+@mixin with-color() {
+  @each $classname, $color in $colors {
+    &.#{$classname} {
+      color: $color;
+    }
+  }
+}
+
+@mixin with-bg() {
+  @each $classname, $color in $colors {
+    &.#{$classname} {
+      background-color: $color;
+    }
+  }
+}

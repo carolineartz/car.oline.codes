@@ -29,6 +29,7 @@
     "stylelint:fix": "stylelint --fix 'src/**/*.scss' --syntax scss"
   },
   "dependencies": {
+    "@types/styled-components": "^4.4.1",
     "gatsby": "^2.18.17",
     "gatsby-image": "2.0.31",
     "gatsby-plugin-config": "1.0.7",
@@ -44,6 +45,7 @@
     "gsap": "./gsap-bonus.tgz",
     "lodash": "4.17.11",
     "node-sass": "^4.13.0",
+    "react-svg-textures": "http://github.com/carolineartz/react-svg-textures.git#master",
     "sharp": "^0.23.4"
   },
   "devDependencies": {
@@ -67,6 +69,7 @@
     "react-dom": "16.8.4",
     "react-helmet": "5.2.0",
     "rimraf": "2.6.3",
+    "styled-components": "^4.4.1",
     "stylelint": "^12.0.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-scss": "^3.13.0",

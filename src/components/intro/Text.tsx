@@ -7,7 +7,7 @@ type IntroTextSize = 'large' | 'medium' | 'small';
 interface ITextProps {
   children: React.ReactNode;
   className?: any;
-  size: IntroTextSize;
+  size?: IntroTextSize;
 }
 
 export const Text = ({ children, className, size = 'medium' }: ITextProps) => {

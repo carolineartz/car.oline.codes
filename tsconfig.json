@@ -22,6 +22,7 @@
     "isolatedModules": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     // Type declaration files to be included in compilation.
     "types": ["node"],
     // Specify library file to be included in the compilation.

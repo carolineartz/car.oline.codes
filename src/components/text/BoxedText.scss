@@ -1,0 +1,11 @@
+.boxed {
+  border: 2px solid currentColor;
+
+  .inline {
+    display: inline-block;
+  }
+
+  .block {
+    display: block;
+  }
+}

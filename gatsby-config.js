@@ -60,6 +60,7 @@ module.exports = {
         pages: path.join(__dirname, `src/pages`),
         utils: path.join(__dirname, `src/utils`),
         assets: path.join(__dirname, `src/assets`),
+        hooks: path.join(__dirname, `src/hooks`),
       },
     },
     {

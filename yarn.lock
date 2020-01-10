@@ -6010,6 +6010,10 @@ graphql@^14.5.8:
   dependencies:
     iterall "^1.2.2"
 
+gsap@./gsap-bonus.tgz:
+  version "3.0.4"
+  resolved "./gsap-bonus.tgz#5811f731a39b2aec165e618ff61fded8672b3d2c"
+
 gud@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"

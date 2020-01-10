@@ -3,22 +3,29 @@ module.exports = {
   // Specifies the ESLint parser for TypeScript
   parser: "@typescript-eslint/parser",
   extends: [
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    "eslint:recommended", // start with the default recommended rules
+    "plugin:react/recommended", // uses react-specific linting rules
+    "plugin:@typescript-eslint/recommended", // uses typescript-specific lintinng rules
+    "plugin:prettier/recommended", // enables eslint-plugin-prettier and eslint-config-prettier
+    "prettier/@typescript-eslint", // disables typescript-specific linting rules that conflict with prettier
+    "prettier/react" // disables react-specific linting rules that conflict with prettier
+  ],
+  plugins: [
+    "react",
+    "@typescript-eslint",
+    "prettier"
   ],
   settings: {
     react: {
-      version: "detect",
-    },
+      pragma: "React",
+      version: "detect"
+    }
   },
   env: {
     browser: true,
     node: true,
     es6: true,
   },
-  plugins: ["@typescript-eslint", "react", "prettier"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -31,9 +38,15 @@ module.exports = {
   rules: {
     // Disable prop-types as we use TypeScript for type checking
     "react/prop-types": "off",
+    // Allow implicit void for now...
+    "@typescript-eslint/explicit-function-return-type": "off",
     // Enable prettier rules
     "prettier/prettier": "error",
     // allow @ts-ignore for testing purposes
     "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "react/display-name": "off"
   },
 };

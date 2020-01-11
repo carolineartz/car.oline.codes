@@ -1,13 +1,14 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-import { Link } from "gatsby"
 import { Heading } from "grommet"
+
+import { InternalLink } from "components/InternalLink"
 
 export default () => (
   <>
     <Helmet title="Home" />
     <Heading>You are home!</Heading>
-    <Link to="/page-2/">Go to page 2</Link>
+    <InternalLink to="/page-2/" label="Go to page 2" />
   </>
 )

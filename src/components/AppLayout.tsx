@@ -5,70 +5,8 @@ import { helmet } from "utils/helmet"
 
 import { Box, Grommet } from "grommet"
 import { ThemeType } from "grommet/themes/base"
+import { deepFreeze } from "grommet/utils"
 
-export interface GrommetThemeColors {
-  // status
-  "status-error": string
-  "status-warning": string
-  "status-ok": string
-  "status-unknown": string
-  "status-disabled": string
-  "status-critical": string
-  // theme
-  brand: string
-  "accent-1": string
-  "accent-2": string
-  "accent-3": string
-  "accent-4": string
-  "neutral-1": string
-  "neutral-2": string
-  "neutral-3": string
-  "neutral-4": string
-  "neutral-5": string
-  // shades
-  "light-1": string
-  "light-2": string
-  "light-3": string
-  "light-4": string
-  "light-5": string
-  "light-6": string
-  "dark-1": string
-  "dark-2": string
-  "dark-3": string
-  "dark-4": string
-  "dark-5": string
-  "dark-6": string
-  [name: string]: string
-}
-/*
-const accentColors = ["#2AD2C9", "#614767", "#ff8d6d"]
-const neutralColors = ["#425563", "#5F7A76", "#80746E", "#767676"]
-const statusColors = {
-	critical: "#F04953",
-	error: "#F04953",
-	warning: "#FFD144",
-	ok: "#01a982",
-	unknown: "#CCCCCC",
-	disabled: "#CCCCCC",
-}
-
-const colors = {
-	brand: "#01a982",
-	focus: accentColors[0],
-}
-
-const colorArray = (array: string[], prefix: string) =>
-	array.forEach((color, index) => {
-		colors[`${prefix}-${index + 1}`] = color
-	})
-
-colorArray(accentColors, "accent")
-colorArray(neutralColors, "neutral")
-Object.keys(statusColors).forEach(color => {
-	colors[`status-${color}`] = statusColors[color]
-})
-
-*/
 const baseSpacing = 24,
   baseFontSize = baseSpacing * 0.75,
   fontScale = baseSpacing / 6,
@@ -80,15 +18,53 @@ const baseSpacing = 24,
     maxWidth: `${baseSpacing * (baseFontSize + factor * fontScale)}px`,
   })
 
-const theme: ThemeType = {
+const theme: ThemeType = deepFreeze({
   global: {
     colors: {
-      brand: "#614767",
-      background: "#fff",
+      active: "#f2f2f2",
+      brand: "#080D33",
+      focus: "#D5F72A",
+      selected: "#43D8CE",
+      "accent-1": "#2724F2",
+      "accent-2": "#43D8CE",
+      "accent-3": "#D5F72A",
+      "dark-1": "#030513",
+      "dark-2": "#080c2f",
+      "dark-3": "#373F48",
+      "dark-4": "#4C5069",
+      "dark-5": "#797C8E",
+      "dark-6": "#A7A7B3",
+      "light-1": "#F8F9FB",
+      "light-2": "#EFF0F5",
+      "light-3": "#ECECF4",
+      "light-4": "#E8EBF2",
+      "light-5": "#D5D8DE",
+      "light-6": "#CBCED4",
+      "neutral-1": "#54A5A0",
+      "neutral-2": "#4A3F60",
+      "neutral-3": "#3D7A9E",
+      "neutral-4": "#D4896A",
+      "status-critical": "#FF5449",
+      "status-error": "#FF5449",
+      "status-warning": "#FF9249",
+      "status-ok": "#5FC462",
+      "status-unknown": "#A7A7B3",
+      "status-disabled": "#A7A7B3",
     },
     font: {
       family: "Montserrat, sans-serif",
-      size: "14px",
+      size: "16px",
+    },
+  },
+  anchor: {
+    textDecoration: "none",
+    fontWeight: 600,
+    color: {
+      dark: "accent-3",
+      light: "accent-3",
+    },
+    hover: {
+      textDecoration: "underline",
     },
   },
   heading: {
@@ -114,9 +90,9 @@ const theme: ThemeType = {
         large: { ...fontSizing(0) },
       },
     },
-    weight: 600,
+    weight: 400,
   },
-}
+})
 
 type AppProps = {
   children: React.ReactNode

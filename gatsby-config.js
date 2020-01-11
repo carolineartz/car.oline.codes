@@ -12,6 +12,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     // TODO: disable unneded features when ready to deploy.
     `gatsby-plugin-lodash`,
     {

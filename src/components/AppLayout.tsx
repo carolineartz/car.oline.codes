@@ -3,7 +3,7 @@ import Helmet from "react-helmet"
 
 import { helmet } from "utils/helmet"
 
-import { Box, Grommet } from "grommet"
+import { Grommet } from "grommet"
 import { ThemeType } from "grommet/themes/base"
 import { deepFreeze } from "grommet/utils"
 
@@ -34,7 +34,7 @@ const theme: ThemeType = deepFreeze({
       "dark-4": "#4C5069",
       "dark-5": "#797C8E",
       "dark-6": "#A7A7B3",
-      "light-1": "#F8F9FB",
+      "light-1": "#FFFFFF",
       "light-2": "#EFF0F5",
       "light-3": "#ECECF4",
       "light-4": "#E8EBF2",
@@ -102,9 +102,7 @@ const App = ({ children }: AppProps) => (
   <div>
     <Grommet theme={theme} full={true}>
       <Helmet {...helmet} />
-      <Box direction="row" justify="center" align="center" background={"brand"}>
-        {children}
-      </Box>
+      {children}
     </Grommet>
   </div>
 )

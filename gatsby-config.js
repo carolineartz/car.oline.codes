@@ -62,6 +62,7 @@ module.exports = {
         utils: path.join(__dirname, `src/utils`),
         assets: path.join(__dirname, `src/assets`),
         hooks: path.join(__dirname, `src/hooks`),
+        animation: path.join(__dirname, `src/animation`),
       },
     },
     {

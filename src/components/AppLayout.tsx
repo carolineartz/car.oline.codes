@@ -67,12 +67,20 @@ const theme: ThemeType = deepFreeze({
       textDecoration: "underline",
     },
   },
+  text: {
+    xsmall: { ...fontSizing(-1.5) },
+    small: { ...fontSizing(-1) },
+    medium: { ...fontSizing(0) }, // 18px
+    large: { ...fontSizing(1) }, // 22px
+    xlarge: { ...fontSizing(2) },
+    xxlarge: { ...fontSizing(16) },
+  },
   heading: {
     level: {
       1: {
         small: { ...fontSizing(4) },
         medium: { ...fontSizing(8) },
-        large: { ...fontSizing(16) },
+        large: { ...fontSizing(32) },
       },
       2: {
         small: { ...fontSizing(2) },

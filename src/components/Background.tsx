@@ -21,32 +21,17 @@ const Circle = styled(Box)<BoxProps & { size: number; background: string }>`
     return css`
       width: ${size}px;
       height: ${size}px;
-      margin: -(${size} / 2) 0 0 - (${size} / 2);
+      margin: ${-(size / 2)}px 0 0 ${-(size / 2)}px;
     `
   }}
 `
 
-export const Background = () => (
-  <Container>
+type BackgroundProps = { id: string }
+
+export const Background = ({ id }: BackgroundProps) => (
+  <Container id={id}>
     <Circle background="accent-1" size={440} />
     <Circle background="accent-2" size={338} />
     <Circle background="accent-3" size={267} />
   </Container>
 )
-
-// interface CircleProps extends BoxProps {
-//   layer: "fg" | "mg" | "bg"
-// }
-
-// let size: number
-
-// switch (props.layer) {
-//   case "fg":
-//     size = 267
-//     break
-//   case "mg":
-//     size = 338
-//     break
-//   case "bg":
-//     size = 440
-// }

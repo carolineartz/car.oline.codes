@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import * as React from "react"
 
 import { Box, Text } from "grommet"
@@ -8,16 +9,17 @@ import Name from "assets/svg/caroline.svg"
 
 export const Greeting = () => (
   <Box>
-    <Box direction="row" pad="medium">
-      <Box basis="1/3" id={HAND_CONTAINER_ID}>
+    <Box direction="row" pad="medium" align="baseline">
+      <Box basis="1/3" height={{ min: "160px", max: "360px" }} id={HAND_CONTAINER_ID}>
         <Hand id={HAND_ID} />
       </Box>
-      {
-        // eslint-disable-next-line react/no-unescaped-entities
-        <Text size="xxlarge">I'm</Text>
-      }
+      <Box>
+        <Text size="xxlarge" weight={900}>
+          I'm
+        </Text>
+      </Box>
     </Box>
-    <Box fill="horizontal">
+    <Box pad="small" fill="horizontal">
       <Name />
     </Box>
   </Box>

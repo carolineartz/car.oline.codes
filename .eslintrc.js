@@ -47,6 +47,7 @@ module.exports = {
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "react/no-unescaped-entities": "off"
   },
 };

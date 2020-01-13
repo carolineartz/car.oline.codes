@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import * as React from "react"
 
 import { Box } from "grommet"

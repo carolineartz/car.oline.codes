@@ -1,13 +1,11 @@
-/* eslint-disable react/no-unescaped-entities */
 import * as React from "react"
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Box, Text } from "grommet"
-import { ResponsiveText } from "components/ResponsiveText"
 
 import { HAND_CONTAINER_ID, HAND_ID } from "animation/GreetTimeline"
 import Hand from "assets/svg/hand.svg"
 import Name from "assets/svg/caroline.svg"
+
+import { Box } from "grommet"
+import { ResponsiveText } from "components/ResponsiveText"
 
 export const Greeting = () => (
   <Box>

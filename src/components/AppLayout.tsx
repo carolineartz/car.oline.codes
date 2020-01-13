@@ -9,7 +9,7 @@ import { deepFreeze } from "grommet/utils"
 
 const baseSpacing = 24,
   baseFontSize = baseSpacing * 0.75,
-  fontScale = baseSpacing / 6,
+  fontScale = baseSpacing / 3,
   fontSizing = (factor: number) => ({
     size: `${baseFontSize + factor * fontScale}px`,
     height: `${baseSpacing + factor * fontScale}px`,
@@ -72,7 +72,7 @@ const theme: ThemeType = deepFreeze({
     small: { ...fontSizing(-1) },
     medium: { ...fontSizing(0) }, // 18px
     large: { ...fontSizing(1) }, // 22px
-    xlarge: { ...fontSizing(2) },
+    xlarge: { ...fontSizing(8) },
     xxlarge: { ...fontSizing(16) },
   },
   heading: {

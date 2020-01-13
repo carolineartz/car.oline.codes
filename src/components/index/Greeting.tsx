@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import * as React from "react"
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Box, Text } from "grommet"
+import { ResponsiveText } from "components/ResponsiveText"
 
 import { HAND_CONTAINER_ID, HAND_ID } from "animation/GreetTimeline"
 import Hand from "assets/svg/hand.svg"
@@ -14,9 +16,9 @@ export const Greeting = () => (
         <Hand id={HAND_ID} />
       </Box>
       <Box>
-        <Text size="xxlarge" weight={900}>
+        <ResponsiveText fontSize={{ min: "40px", max: "140px" }} weight={900}>
           I'm
-        </Text>
+        </ResponsiveText>
       </Box>
     </Box>
     <Box pad="small" fill="horizontal">

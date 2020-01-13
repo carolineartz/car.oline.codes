@@ -3,9 +3,13 @@ import Helmet from "react-helmet"
 import styled from "styled-components"
 import { gsap } from "gsap"
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Grid, Box, Main } from "grommet"
-import { Background } from "components/Background"
-import { Greeting } from "components/Greeting"
+import { Background } from "components/index/Background"
+import { Greeting } from "components/index/Greeting"
+import { ProjectsIntro } from "components/index/ProjectsIntro"
+import { TypingCat } from "components/index/TypingCat"
+
 import { usePointPosition } from "hooks/use-point-position"
 
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -39,6 +43,20 @@ const GreetingArea = styled(Box)`
   mix-blend-mode: lighten;
 `
 
+const ProjectsIntroArea = styled(Box)`
+  /* Do this with theme var */
+  color: #ffffff;
+  mix-blend-mode: darken;
+  background: #080d33;
+`
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const TypingCatArea = styled(Box)`
+  /* Do this with theme var */
+  color: #080d33;
+  mix-blend-mode: lighten;
+`
+
 type ContentProps = { children: React.ReactNode }
 
 // This is pulled out into a separate component with the cursor through a hook so I can use that
@@ -62,12 +80,12 @@ const Content = ({ children }: ContentProps) => {
 
   return (
     <Grid
-      fill={true}
-      rows={["2/3", "1/3"]}
+      rows={["1fr", "auto", "1fr"]}
       columns={["1/3", "2/3"]}
       areas={[
-        { name: "greeting", start: [0, 0], end: [1, 0] },
-        { name: "projects-intro", start: [0, 1], end: [1, 1] },
+        { name: "greeting", start: [0, 0], end: [2, 0] },
+        { name: "projects-intro", start: [0, 1], end: [2, 1] },
+        { name: "typing-cat", start: [0, 2], end: [2, 2] },
       ]}
     >
       {children}
@@ -103,14 +121,19 @@ export default class extends PureComponent {
         <Helmet title="Caroline Artz" />
         <Cursor id="cursor" />
         <Background id="bg" />
-        <Main>
+        <Box as="main">
           <Content>
             <GreetingArea background="light-1" gridArea="greeting">
               <Greeting />
             </GreetingArea>
-            <Box gridArea="projects-intro">Cat Typing Thing</Box>
+            <ProjectsIntroArea background="brand" gridArea="projects-intro">
+              <ProjectsIntro />
+            </ProjectsIntroArea>
+            <TypingCatArea background="light-1" gridArea="typing-cat">
+              <TypingCat />
+            </TypingCatArea>
           </Content>
-        </Main>
+        </Box>
       </>
     )
   }

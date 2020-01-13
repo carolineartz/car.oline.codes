@@ -3,8 +3,7 @@ import Helmet from "react-helmet"
 import styled from "styled-components"
 import { gsap } from "gsap"
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Grid, Box, Main } from "grommet"
+import { Grid, Box } from "grommet"
 import { Background } from "components/index/Background"
 import { Greeting } from "components/index/Greeting"
 import { ProjectsIntro } from "components/index/ProjectsIntro"

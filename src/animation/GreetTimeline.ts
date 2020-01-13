@@ -9,7 +9,7 @@ export const CURSOR_CIRCLES = "#bg > div"
 const waveDuration = 0.1
 const waves = 3
 
-const GreetTimeline = (): GSAPStatic.Timeline => {
+const GreetTimeline = (): GSAPTimeline => {
   gsap.set(`#${HAND_CONTAINER_ID}`, {
     scale: 0.7,
     transformOrigin: "50% 50%",
@@ -26,10 +26,10 @@ const GreetTimeline = (): GSAPStatic.Timeline => {
     autoAlpha: 0,
   })
 
-  const fadeInText = (): GSAPStatic.Timeline =>
+  const fadeInText = (): GSAPTimeline =>
     gsap.timeline().to(HELLO_TEXT, { autoAlpha: 1, duration: 0.25, ease: "none" })
 
-  const hand = (): GSAPStatic.Timeline =>
+  const hand = (): GSAPTimeline =>
     gsap
       .timeline({
         repeat: waves,
@@ -38,7 +38,7 @@ const GreetTimeline = (): GSAPStatic.Timeline => {
       .to(`#${HAND_ID}`, { rotation: -2 })
       .to(`#${HAND_ID}`, { rotation: 15 })
 
-  const waveHello = (): GSAPStatic.Timeline =>
+  const waveHello = (): GSAPTimeline =>
     gsap
       .timeline({ delay: 0.5 })
       .to(`#${HAND_CONTAINER_ID}`, { duration: 0.2, ease: "circ", scale: 1.2 })

@@ -6,16 +6,16 @@ const DOT = "#dot"
 const INTRO_TEXT = "#intro-text__im"
 const COMPOUND_PATH = "#caroline-logo .compound"
 
-const IntroduceTimeline = (): GSAPStatic.Timeline => {
+const IntroduceTimeline = (): GSAPTimeline => {
   gsap.set(LOGO_PATH, { drawSVG: "0% 0%" })
   gsap.set(DOT_GROUP, { yPercent: 100 })
   gsap.set(COMPOUND_PATH, { autoAlpha: 0 })
   gsap.set(INTRO_TEXT, { autoAlpha: 0 })
 
-  const fadeInText = (): GSAPStatic.Timeline =>
+  const fadeInText = (): GSAPTimeline =>
     gsap.timeline({ delay: 0.5 }).to(INTRO_TEXT, { autoAlpha: 1, duration: 0.25, ease: "none" })
 
-  const shimmer = (): GSAPStatic.Timeline =>
+  const shimmer = (): GSAPTimeline =>
     gsap
       .timeline({ repeat: -1, duration: 2.0, repeatDelay: 1.3, yoyo: true })
       .addLabel("o")
@@ -25,7 +25,7 @@ const IntroduceTimeline = (): GSAPStatic.Timeline => {
       .to("#rainbox-offset2", { attr: { offset: "60%" } }, "o")
       .to("#rainbox-offset3", { attr: { offset: "80%" } }, "<")
 
-  const drawName = (): GSAPStatic.Timeline => {
+  const drawName = (): GSAPTimeline => {
     const drawSVGLinear = { drawSVG: "100%", ease: "none" }
 
     return gsap

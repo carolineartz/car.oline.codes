@@ -2,7 +2,6 @@ import * as React from "react"
 import Helmet from "react-helmet"
 
 import { helmet } from "utils/helmet"
-
 import { Grommet } from "grommet"
 import { ThemeType } from "grommet/themes/base"
 import { deepFreeze } from "grommet/utils"

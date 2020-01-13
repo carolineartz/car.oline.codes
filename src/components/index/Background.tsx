@@ -1,6 +1,7 @@
 import * as React from "react"
-import { Box, BoxProps } from "grommet"
 import styled, { css } from "styled-components"
+
+import { Box, BoxProps } from "grommet"
 
 const Container = styled.div`
   position: fixed;

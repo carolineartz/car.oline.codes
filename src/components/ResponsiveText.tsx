@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Text, TextProps } from "grommet"
 
 /*
-  Convience styled component for extended grommet `Text` using polished lib to create responsive sizing
+  Convenience styled component for extended grommet `Text` using polished lib to create responsive sizing
 */
 
 type ResponsiveTextProps = TextProps & {

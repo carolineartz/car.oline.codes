@@ -19,7 +19,7 @@ export const Greeting = () => (
         </ResponsiveText>
       </Box>
     </Box>
-    <Box pad="small" fill="horizontal">
+    <Box pad={{ horizontal: "medium", bottom: "large" }} fill="horizontal">
       <Name />
     </Box>
   </Box>

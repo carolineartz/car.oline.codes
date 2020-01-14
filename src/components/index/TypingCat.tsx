@@ -134,6 +134,7 @@ const GlobalStyle = createGlobalStyle`
           }
         `
       )
+
       return typingCss
     }, [] as SimpleInterpolation[])
   }}
@@ -142,7 +143,7 @@ const GlobalStyle = createGlobalStyle`
 export const TypingCat = () => (
   <Box basis="full" align="center" justify="center">
     <GlobalStyle />
-    <Box width="100%">
+    <Box width="70%" pad={{ vertical: "xlarge" }}>
       <Cat />
     </Box>
   </Box>

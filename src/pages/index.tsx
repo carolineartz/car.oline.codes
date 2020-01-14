@@ -8,6 +8,7 @@ import { Background } from "components/index/Background"
 import { Greeting } from "components/index/Greeting"
 import { ProjectsIntro } from "components/index/ProjectsIntro"
 import { TypingCat } from "components/index/TypingCat"
+import { LanguageStatus } from "components/index/LanguageStatus"
 
 import { usePointPosition } from "hooks/use-point-position"
 
@@ -56,6 +57,13 @@ const TypingCatArea = styled(Box)`
   mix-blend-mode: lighten;
 `
 
+const LanguageStatusArea = styled(Box)`
+  /* Do this with theme var */
+  color: #ffffff;
+  mix-blend-mode: darken;
+  background: #080d33;
+`
+
 type ContentProps = { children: React.ReactNode }
 
 // This is pulled out into a separate component with the cursor through a hook so I can use that
@@ -79,12 +87,13 @@ const Content = ({ children }: ContentProps) => {
 
   return (
     <Grid
-      rows={["1fr", "auto", "1fr"]}
+      rows={["1fr", "auto", "auto", "auto"]}
       columns={["1/3", "2/3"]}
       areas={[
         { name: "greeting", start: [0, 0], end: [2, 0] },
-        { name: "projects-intro", start: [0, 1], end: [2, 1] },
+        { name: "language-status", start: [0, 1], end: [2, 1] },
         { name: "typing-cat", start: [0, 2], end: [2, 2] },
+        { name: "projects-intro", start: [0, 3], end: [2, 3] },
       ]}
     >
       {children}
@@ -125,12 +134,15 @@ export default class extends PureComponent {
             <GreetingArea background="light-1" gridArea="greeting">
               <Greeting />
             </GreetingArea>
-            <ProjectsIntroArea background="brand" gridArea="projects-intro">
-              <ProjectsIntro />
-            </ProjectsIntroArea>
+            <LanguageStatusArea background="brand" gridArea="language-status">
+              <LanguageStatus />
+            </LanguageStatusArea>
             <TypingCatArea background="light-1" gridArea="typing-cat">
               <TypingCat />
             </TypingCatArea>
+            <ProjectsIntroArea background="brand" gridArea="projects-intro">
+              <ProjectsIntro />
+            </ProjectsIntroArea>
           </Content>
         </Box>
       </>

@@ -9,7 +9,7 @@ type LanguageStatusState = {
   animation?: LanguageStatusAnimation
 }
 
-const DEFAULT_LANGUAGE = "TypeScript"
+const DEFAULT_LANGUAGE = "TypeScripting"
 const LOCAL_STORAGE_LANGUAGE_KEY = "gatsby__currentLanguage"
 
 const googleSheetsApiEndpoint = (): string => {

@@ -17,6 +17,7 @@ const DrawSVGPlugin = require("gsap/DrawSVGPlugin")
 const CustomEase = require("gsap/CustomEase")
 const CustomBounce = require("gsap/CustomBounce")
 const SplitText = require("gsap/SplitText")
+import GSDevTools from "gsap/GSDevTools"
 /* eslint-enable @typescript-eslint/no-var-requires */
 
 import greet from "animation/GreetTimeline"
@@ -105,10 +106,12 @@ const Content = ({ children }: ContentProps) => {
 export default class extends PureComponent {
   constructor(props: any) {
     super(props)
-    ;(gsap as any).registerPlugin(CustomEase, CustomBounce, DrawSVGPlugin, SplitText)
+    ;(gsap as any).registerPlugin(CustomEase, CustomBounce, DrawSVGPlugin, SplitText, GSDevTools)
   }
 
   componentDidMount() {
+    // GSDevTools.create()
+
     this.animate()
   }
 

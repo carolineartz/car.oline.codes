@@ -4,6 +4,8 @@ import { PointPosition } from "../hooks/use-point-position"
 
 import SplitText from "gsap/SplitText"
 
+require("animation/bezier-easing.min.js")
+
 class Picker<T> {
   private readonly pickCount: () => number
   readonly items: T[] // can be private but public now for logging
@@ -60,7 +62,8 @@ export class LanguageStatusAnimation {
   pointPosition?: PointPosition
 
   private element: HTMLElement
-  private _letters: HTMLElement[] // the randomly picked ones; don't actually nee the reader -- just for debugging
+  private _letters: HTMLElement[] // the randomly picked ones; don't
+  private prevLetters: HTMLElement[]
   private picker: Picker<HTMLElement>
 
   constructor(element: HTMLElement) {
@@ -70,14 +73,9 @@ export class LanguageStatusAnimation {
     this.characters = splitText.chars
     this.picker = new Picker(this.characters)
 
+    this.prevLetters = []
     this._letters = this.picker.pick()
     this.init()
-  }
-
-  init() {
-    this.element.addEventListener("mouseenter", this.updateLetters.bind(this))
-    this.element.addEventListener("mousemove", this.translateLetters.bind(this))
-    this.element.addEventListener("mouseleave", this.resetTranslations.bind(this))
   }
 
   get letters() {
@@ -88,58 +86,43 @@ export class LanguageStatusAnimation {
     return this.letters.length
   }
 
+  init() {
+    this.element.addEventListener(
+      "mouseenter",
+      function(this: LanguageStatusAnimation) {
+        this.updateLetters().then(
+          function(this: LanguageStatusAnimation) {
+            if (this.prevLetters) {
+              this.resetTranslations(this.prevLetters)
+            }
+          }.bind(this)
+        )
+      }.bind(this)
+    )
+    this.element.addEventListener("mousemove", this.translateLetters.bind(this))
+    this.element.addEventListener("mouseleave", this.resetTranslations.bind(this, this.letters))
+  }
+
   animate(pointPosition: PointPosition) {
     this.pointPosition = pointPosition
   }
 
-  private updateLetters(this: LanguageStatusAnimation): HTMLElement[] {
+  // mouseenter
+  private updateLetters(
+    this: LanguageStatusAnimation
+  ): Promise<{ prevLetters: HTMLElement[]; letters: HTMLElement[] }> {
+    console.log(`%c Enter`, "color: #7cbd64")
+    this.prevLetters = this._letters
     this._letters = this.picker.pick()
-    return this.letters
-  }
 
-  private resetTranslations(this: LanguageStatusAnimation): Function {
-    return () =>
-      requestAnimationFrame(() => {
-        // if we're on a touch device or something
-        if (
-          !this.pointPosition ||
-          !this.pointPosition.directionX ||
-          !this.pointPosition.directionY
-        ) {
-          return
-        }
-        gsap
-          .timeline()
-          .to(
-            this.letters,
-            {
-              duration: 0.2,
-              ease: "quad.out",
-              y: this.pointPosition.directionY === "up" ? "-=80%" : "+=80",
-              rotation: this.pointPosition.directionY === "up" ? "-=10" : "+=10",
-              opacity: 0,
-            },
-            0
-          )
-          .to(
-            this.letters,
-            {
-              ease: Elastic.easeOut.config(1, 0.4),
-              startAt: {
-                y: this.pointPosition.directionY === "up" ? "80%" : "-80%",
-                opacity: 0,
-              },
-              stagger: 0.02,
-              y: "0%",
-              rotation: 0,
-              opacity: 1,
-            },
-            0.2
-          )
-      })
+    return Promise.resolve({
+      prevLetters: this.prevLetters,
+      letters: this._letters,
+    })
   }
 
   private translateLetters(this: LanguageStatusAnimation): void {
+    console.log(`%c Over`, "color: #FF7349")
     if (!this.pointPosition) return
     // Document scrolls
     const docScrolls = {
@@ -176,5 +159,48 @@ export class LanguageStatusAnimation {
         ),
       })
     }
+  }
+
+  private resetTranslations(
+    this: LanguageStatusAnimation,
+    letters: HTMLElement[]
+  ): GSAPTimeline | undefined {
+    console.log(`%c Exit`, "color: #B13254")
+    // return () => {
+    //   return requestAnimationFrame(() => {
+    // if we're on a touch device or something
+    if (!this.pointPosition || !this.pointPosition.directionX || !this.pointPosition.directionY) {
+      return
+    }
+
+    return gsap
+      .timeline()
+      .to(
+        letters,
+        {
+          duration: 0.2,
+          ease: "quad.out",
+          y: this.pointPosition.directionY === "up" ? "-=80%" : "+=80%",
+          rotation: this.pointPosition.directionY === "up" ? "-=10" : "+=10",
+          opacity: 0,
+        },
+        0
+      )
+      .to(
+        letters,
+        {
+          duration: random(0.5, 0.7, true),
+          ease: Elastic.easeOut.config(1, 0.4),
+          startAt: {
+            y: this.pointPosition.directionY === "up" ? "80%" : "-80%",
+            opacity: 0,
+          },
+          stagger: 0.02,
+          y: "0%",
+          rotation: 0,
+          opacity: 1,
+        },
+        0.2
+      )
   }
 }

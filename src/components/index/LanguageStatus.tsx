@@ -1,10 +1,12 @@
 import * as React from "react"
 import { LanguageText } from "components/index/LanguageText"
+import { LanguageStatusAnimation } from "animation/LanguageStatusAnimation"
 
 type LanguageStatusState = {
   currentLanguage: string
   previousLanguage: string
   apiEndpoint: string
+  animation?: LanguageStatusAnimation
 }
 
 const DEFAULT_LANGUAGE = "TypeScript"
@@ -23,10 +25,18 @@ const googleSheetsApiEndpoint = (): string => {
 }
 // TODO: Guard against API call and localStorage failures.
 export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState> {
+  ref: React.RefObject<HTMLSpanElement>
+
   state = {
     currentLanguage: DEFAULT_LANGUAGE,
     previousLanguage: "",
     apiEndpoint: googleSheetsApiEndpoint(),
+    animation: undefined,
+  }
+
+  constructor(props = {}) {
+    super(props)
+    this.ref = React.createRef()
   }
 
   updateLanguage = async () => {
@@ -43,8 +53,6 @@ export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState>
     }
   }
 
-  // textNode: any
-
   componentDidMount() {
     const storedLanguage: string =
       localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY) || DEFAULT_LANGUAGE
@@ -58,9 +66,18 @@ export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState>
     this.updateLanguage()
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  componentDidUpdate(_prevProps = {}, prevState: LanguageStatusState) {
+    if (this.ref.current && this.state.currentLanguage !== prevState.currentLanguage) {
+      this.setState({ animation: new LanguageStatusAnimation(this.ref.current) })
+    }
+  }
+
   render() {
-    const ref: React.RefObject<HTMLDivElement> = React.createRef()
-    // <LanguageText textRef={(el: any) => (this.textNode = el)} text={this.state.currentLanguage} />
-    return <LanguageText ref={ref}>{this.state.currentLanguage}</LanguageText>
+    return (
+      <LanguageText ref={this.ref} animation={this.state.animation}>
+        {this.state.currentLanguage}
+      </LanguageText>
+    )
   }
 }

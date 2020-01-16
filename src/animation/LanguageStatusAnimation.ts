@@ -1,10 +1,8 @@
-// import * as React from "react"
 import { gsap, Elastic } from "gsap"
 import { sampleSize, random, round } from "lodash"
 import { PointPosition } from "../hooks/use-point-position"
 
 import SplitText from "gsap/SplitText"
-// ;(gsap as any).registerPlugin(SplitText)
 
 class Picker<T> {
   private readonly pickCount: () => number
@@ -58,23 +56,28 @@ const lineEq = (y2: number, y1: number, x2: number, x1: number, currentVal: numb
 }
 
 export class LanguageStatusAnimation {
-  characters: Node[]
-  pointPosition: PointPosition
+  characters: HTMLElement[]
+  pointPosition?: PointPosition
 
-  private node: Node
-  private _letters: Node[] // the randomly picked ones
-  private picker: Picker<Node>
+  private element: HTMLElement
+  private _letters: HTMLElement[] // the randomly picked ones; don't actually nee the reader -- just for debugging
+  private picker: Picker<HTMLElement>
 
-  constructor(node: Node, pointPosition: PointPosition) {
-    this.node = node
-    this.pointPosition = pointPosition
-    const splitText = new SplitText(node)
+  constructor(element: HTMLElement) {
+    this.element = element
+    const splitText = new SplitText(element)
 
     this.characters = splitText.chars
     this.picker = new Picker(this.characters)
-    // eslint-disable-next-line no-debugger
-    // debugger
+
     this._letters = this.picker.pick()
+    this.init()
+  }
+
+  init() {
+    this.element.addEventListener("mouseenter", this.updateLetters.bind(this))
+    this.element.addEventListener("mousemove", this.translateLetters.bind(this))
+    this.element.addEventListener("mouseleave", this.resetTranslations.bind(this))
   }
 
   get letters() {
@@ -85,19 +88,11 @@ export class LanguageStatusAnimation {
     return this.letters.length
   }
 
-  animate() {
-    this.node.removeEventListener("mouseenter", this.updateLetters.bind(this))
-    this.node.removeEventListener("mousemove", this.translateLetters.bind(this))
-    this.node.removeEventListener("mouseleave", this.resetTranslations.bind(this))
-
-    this.node.addEventListener("mouseenter", this.updateLetters.bind(this))
-    this.node.addEventListener("mousemove", this.translateLetters.bind(this))
-    this.node.addEventListener("mouseleave", this.resetTranslations.bind(this))
+  animate(pointPosition: PointPosition) {
+    this.pointPosition = pointPosition
   }
 
-  private updateLetters(this: LanguageStatusAnimation): Node[] {
-    // eslint-disable-next-line no-debugger
-    // debugger
+  private updateLetters(this: LanguageStatusAnimation): HTMLElement[] {
     this._letters = this.picker.pick()
     return this.letters
   }
@@ -105,7 +100,12 @@ export class LanguageStatusAnimation {
   private resetTranslations(this: LanguageStatusAnimation): Function {
     return () =>
       requestAnimationFrame(() => {
-        if (!this.pointPosition.directionX || !this.pointPosition.directionY) {
+        // if we're on a touch device or something
+        if (
+          !this.pointPosition ||
+          !this.pointPosition.directionX ||
+          !this.pointPosition.directionY
+        ) {
           return
         }
         gsap
@@ -140,13 +140,14 @@ export class LanguageStatusAnimation {
   }
 
   private translateLetters(this: LanguageStatusAnimation): void {
+    if (!this.pointPosition) return
     // Document scrolls
     const docScrolls = {
       left: document.body.scrollLeft + document.documentElement.scrollLeft,
       top: document.body.scrollTop + document.documentElement.scrollTop,
     }
-    const bounds = (this.node as HTMLElement).getBoundingClientRect()
-    // Mouse position relative to this.node
+    const bounds = this.element.getBoundingClientRect()
+    // Mouse position relative to this.element
     const relmousepos = {
       x: this.pointPosition.x - bounds.left - docScrolls.left,
       y: this.pointPosition.y - bounds.top - docScrolls.top,

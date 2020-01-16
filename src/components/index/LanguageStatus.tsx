@@ -1,8 +1,9 @@
 import * as React from "react"
-import { ResponsiveText } from "components/ResponsiveText"
+import { LanguageText } from "components/index/LanguageText"
 
 type LanguageStatusState = {
   currentLanguage: string
+  previousLanguage: string
   apiEndpoint: string
 }
 
@@ -24,19 +25,25 @@ const googleSheetsApiEndpoint = (): string => {
 export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState> {
   state = {
     currentLanguage: DEFAULT_LANGUAGE,
+    previousLanguage: "",
     apiEndpoint: googleSheetsApiEndpoint(),
   }
 
-  updateCurrentLanguage = async () => {
+  updateLanguage = async () => {
     const currentLanguageResponse = await fetch(this.state.apiEndpoint)
+    // TODO: type check this response
     const currentLanguageData: any | undefined = await currentLanguageResponse.json()
 
     if (currentLanguageData) {
-      const lang: string = currentLanguageData.values[0][0]
-      this.setState({ currentLanguage: lang })
-      localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, lang)
+      const currentLanguage: string = currentLanguageData.values[0][0]
+      const previousLanguage: string = this.state.currentLanguage
+
+      this.setState({ currentLanguage, previousLanguage })
+      localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, currentLanguage)
     }
   }
+
+  // textNode: any
 
   componentDidMount() {
     const storedLanguage: string =
@@ -44,18 +51,16 @@ export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState>
     this.setState({ currentLanguage: storedLanguage })
 
     setInterval(
-      this.updateCurrentLanguage,
+      this.updateLanguage,
       parseInt(process.env.GATSBY_POLL_GOOGLE_SHEETS_CURRENT_LANGUAGE_INTERVAL_MS || "3600000")
     )
 
-    this.updateCurrentLanguage()
+    this.updateLanguage()
   }
 
   render() {
-    return (
-      <ResponsiveText fontSize={{ min: "50px", max: "99px" }}>
-        {this.state.currentLanguage}
-      </ResponsiveText>
-    )
+    const ref: React.RefObject<HTMLDivElement> = React.createRef()
+    // <LanguageText textRef={(el: any) => (this.textNode = el)} text={this.state.currentLanguage} />
+    return <LanguageText ref={ref}>{this.state.currentLanguage}</LanguageText>
   }
 }

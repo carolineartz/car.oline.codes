@@ -1,9 +1,15 @@
+/* eslint-disable prettier/prettier */
 import * as React from "react"
+
+type XDirection = "left" | "right"
+type YDirection = "up" | "down"
 
 export type PointPosition = {
   origin: "window" | "user"
   x: number
   y: number
+  directionX?: XDirection
+  directionY?: YDirection
 }
 
 /**
@@ -25,15 +31,30 @@ export const usePointPosition = (defaultPosition?: PointPosition) => {
     setPosition(getWindowPosition())
   }
 
-  const handleUserUpdatePosition = (evt: MouseEvent | TouchEvent) => {
+  const handleUserUpdatePosition = (event: MouseEvent | TouchEvent) => {
     // once we've the target starts being set by user actions, don't set relative to the window anymore.
     document.body.removeEventListener("resize", handleWindowSetPosition)
 
-    if (evt instanceof MouseEvent) {
-      setPosition({ origin: "user", x: evt.clientX, y: evt.clientY })
+    if (event instanceof MouseEvent) {
+      let directionX: XDirection | undefined = undefined
+      let directionY: YDirection | undefined = undefined
+
+      if (event.pageY < position.y) {
+        directionY = "up";
+      } else if (event.pageY > position.y) {
+        directionY = "down";
+      }
+
+      if (event.pageX < position.x) {
+        directionX = "left";
+      } else if (event.pageX > position.x) {
+        directionX = "right";
+      }
+
+      setPosition({ origin: "user", x: event.clientX, y: event.clientY, directionX, directionY})
     } else {
       // only going to report with the first touch in the list of its multi-touch, for now.
-      const firstTouch = evt.changedTouches[0]
+      const firstTouch = event.changedTouches[0]
       setPosition({ origin: "user", x: firstTouch.clientX, y: firstTouch.clientY })
     }
   }

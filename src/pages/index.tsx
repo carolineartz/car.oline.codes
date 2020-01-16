@@ -16,6 +16,7 @@ import { usePointPosition } from "hooks/use-point-position"
 const DrawSVGPlugin = require("gsap/DrawSVGPlugin")
 const CustomEase = require("gsap/CustomEase")
 const CustomBounce = require("gsap/CustomBounce")
+const SplitText = require("gsap/SplitText")
 /* eslint-enable @typescript-eslint/no-var-requires */
 
 import greet from "animation/GreetTimeline"
@@ -104,7 +105,7 @@ const Content = ({ children }: ContentProps) => {
 export default class extends PureComponent {
   constructor(props: any) {
     super(props)
-    ;(gsap as any).registerPlugin(CustomEase, CustomBounce, DrawSVGPlugin)
+    ;(gsap as any).registerPlugin(CustomEase, CustomBounce, DrawSVGPlugin, SplitText)
   }
 
   componentDidMount() {

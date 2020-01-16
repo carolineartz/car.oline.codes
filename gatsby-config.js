@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path")
+console.log("and again so the language will cahnge lol :) ")
 
 module.exports = {
   siteMetadata: {

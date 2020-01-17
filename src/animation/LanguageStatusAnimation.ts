@@ -174,9 +174,9 @@ export class LanguageStatusAnimation {
     this.timeline.to(
       this.characters,
       {
-        duration: 1,
+        duration: 0.3,
         rotation: 0,
-        ease: "power4.out",
+        ease: "power4.in",
         y: 0,
         onComplete: this.timeline.clear,
       },
@@ -228,8 +228,8 @@ export class LanguageStatusAnimation {
             startAt: {
               // eslint-disable-next-line @typescript-eslint/no-use-before-define
               y: pointPositionConditionalWithDefault("up", this.pointPosition, {
-                ifTrue: "-80%",
-                ifFalse: "80%",
+                ifTrue: "80%",
+                ifFalse: "-80%",
               }),
               opacity: 0,
             },

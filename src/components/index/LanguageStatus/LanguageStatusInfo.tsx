@@ -17,7 +17,7 @@ const renderContent = (): JSX.Element => (
           style={{ textDecoration: "underline" }}
           href="https://codestats.net/users/carolineartz"
         />{" "}
-        plugin, a Zapier Zap, and Google Sheets API.
+        VSCode plugin, a Zapier Zap, and Google Sheets API.
       </ResponsiveText>
     </Box>
   </ThemeContext.Extend>

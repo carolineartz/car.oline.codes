@@ -16,11 +16,22 @@ export type PointPosition = {
  * Custom hooks that returns the current cursor position or a default point if none exists.
  */
 export const usePointPosition = (defaultPosition?: PointPosition) => {
-  const getWindowPosition = (): PointPosition => ({
-    origin: "window",
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-  })
+  // gatsby uses SSR so we don't have window during build
+  const getWindowPosition = (): PointPosition => {
+    if (typeof window !== `undefined`) {
+      return {
+        origin: "window",
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+      }
+    } else {
+      return {
+        origin: "window",
+        x: 0,
+        y: 0
+      }
+    }
+  }
 
   const [position, setPosition] = React.useState<PointPosition>(
     defaultPosition || getWindowPosition()

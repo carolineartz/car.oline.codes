@@ -75,20 +75,22 @@ type ContentProps = { children: React.ReactNode }
 // same logic on other pages but with different styles. Cannot use a hook in stateful components
 // and need one to trigger GSAP animations componentDidMount.
 const Content = ({ children }: ContentProps) => {
-  const position = usePointPosition()
+  if (typeof window !== `undefined`) {
+    const position = usePointPosition()
 
-  gsap.set("#cursor", {
-    x: position.x,
-    y: position.y,
-    ease: "power4.in",
-  })
+    gsap.set("#cursor", {
+      x: position.x,
+      y: position.y,
+      ease: "power4.in",
+    })
 
-  gsap.to("#bg div", {
-    x: position.x,
-    y: position.y,
-    autoAlpha: 0.9,
-    stagger: -0.1,
-  })
+    gsap.to("#bg div", {
+      x: position.x,
+      y: position.y,
+      autoAlpha: 0.9,
+      stagger: -0.1,
+    })
+  }
 
   // CSS grid does seem like overkill right now but adding the projects will make this more logical.
   return (
@@ -111,6 +113,12 @@ const Content = ({ children }: ContentProps) => {
 export default class extends PureComponent {
   constructor(props: any) {
     super(props)
+    if (typeof window !== `undefined`) {
+      this.init()
+    }
+  }
+
+  init() {
     ;(gsap as any).registerPlugin(CustomEase, CustomBounce, DrawSVGPlugin, SplitText, GSDevTools)
   }
 

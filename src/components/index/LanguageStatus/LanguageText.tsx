@@ -9,7 +9,6 @@ type LanuageTextProps = {
   animation?: LanguageStatusAnimation
 }
 
-// May want to try this as a memo'd function -- Currently this is only a child of a Pure component...
 export const LanguageText = React.forwardRef(
   ({ children, animation }: LanuageTextProps, ref: React.Ref<HTMLSpanElement>) => {
     if (animation) {
@@ -18,7 +17,7 @@ export const LanguageText = React.forwardRef(
     }
 
     return (
-      <ResponsiveText fontSize={{ min: "50px", max: "99px" }}>
+      <ResponsiveText textAlign="center" fontSize={{ min: "50px", max: "99px" }}>
         <span ref={ref}>{children}</span>
       </ResponsiveText>
     )

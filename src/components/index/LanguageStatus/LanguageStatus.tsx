@@ -1,10 +1,13 @@
 import * as React from "react"
-import { LanguageText } from "components/index/LanguageText"
+import { LanguageText } from "components/index/LanguageStatus/LanguageText"
 import { LanguageStatusAnimation } from "animation/LanguageStatusAnimation"
+
+import { LanguageStatusInfo } from "components/index/LanguageStatus/LanguageStatusInfo"
+import { Box } from "grommet"
+import { ResponsiveText } from "components/ResponsiveText"
 
 type LanguageStatusState = {
   currentLanguage: string
-  previousLanguage: string
   apiEndpoint: string
   animation?: LanguageStatusAnimation
 }
@@ -29,7 +32,6 @@ export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState>
 
   state = {
     currentLanguage: DEFAULT_LANGUAGE,
-    previousLanguage: "",
     apiEndpoint: googleSheetsApiEndpoint(),
     animation: undefined,
   }
@@ -46,9 +48,8 @@ export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState>
 
     if (currentLanguageData) {
       const currentLanguage: string = currentLanguageData.values[0][0]
-      const previousLanguage: string = this.state.currentLanguage
 
-      this.setState({ currentLanguage, previousLanguage })
+      this.setState({ currentLanguage })
       localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, currentLanguage)
     }
   }
@@ -75,9 +76,25 @@ export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState>
 
   render() {
     return (
-      <LanguageText ref={this.ref} animation={this.state.animation}>
-        {this.state.currentLanguage}
-      </LanguageText>
+      <Box fill pad="small">
+        <Box direction="row" alignContent="between" fill="horizontal">
+          <Box flex="grow" pad="small">
+            <ResponsiveText fontSize={{ min: "26px", max: "45px" }}>
+              You can often find me coding. As it turns out, I am{" "}
+              <strong>
+                <em>currently</em>
+              </strong>{" "}
+              writing some
+            </ResponsiveText>
+            <LanguageText ref={this.ref} animation={this.state.animation}>
+              {this.state.currentLanguage}
+            </LanguageText>
+          </Box>
+          <Box>
+            <LanguageStatusInfo />
+          </Box>
+        </Box>
+      </Box>
     )
   }
 }

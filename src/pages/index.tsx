@@ -8,8 +8,7 @@ import { Background } from "components/index/Background"
 import { Greeting } from "components/index/Greeting"
 import { ProjectsIntro } from "components/index/ProjectsIntro"
 import { TypingCat } from "components/index/TypingCat"
-import { LanguageStatus } from "components/index/LanguageStatus"
-
+import { LanguageStatus } from "components/index/LanguageStatus/LanguageStatus"
 import { usePointPosition } from "hooks/use-point-position"
 
 /* eslint-disable @typescript-eslint/no-var-requires */

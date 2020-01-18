@@ -7,7 +7,8 @@ import {
   SimpleInterpolation,
 } from "styled-components"
 
-import { Box } from "grommet"
+import { Box, Anchor } from "grommet"
+import { Codepen } from "grommet-icons"
 
 import Cat from "assets/svg/bongo-cat.svg"
 
@@ -145,6 +146,13 @@ export const TypingCat = () => (
     <GlobalStyle />
     <Box width="70%" pad={{ vertical: "xlarge" }}>
       <Cat />
+      <Anchor
+        href="https://codepen.io/carolineartz/details/VwYwZaP"
+        alignSelf="end"
+        label="code on "
+        reverse={true}
+        icon={<Codepen />}
+      />
     </Box>
   </Box>
 )

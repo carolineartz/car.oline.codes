@@ -6,6 +6,8 @@ import { Grommet } from "grommet"
 import { ThemeType } from "grommet/themes/base"
 import { deepFreeze } from "grommet/utils"
 
+import { FontStyles } from "components/FontStyles"
+
 const baseSpacing = 24,
   baseFontSize = baseSpacing * 0.75,
   fontScale = baseSpacing / 3,
@@ -22,11 +24,11 @@ const theme: ThemeType = deepFreeze({
     colors: {
       active: "#f2f2f2",
       brand: "#080D33",
-      focus: "#D5F72A",
+      focus: "#c300a0",
       selected: "#43D8CE",
       "accent-1": "#2724F2",
       "accent-2": "#43D8CE",
-      "accent-3": "#D5F72A",
+      "accent-3": "#c300a0",
       "dark-1": "#030513",
       "dark-2": "#080c2f",
       "dark-3": "#373F48",
@@ -51,7 +53,7 @@ const theme: ThemeType = deepFreeze({
       "status-disabled": "#A7A7B3",
     },
     font: {
-      family: "Montserrat, sans-serif",
+      family: "Monique, monospace",
       size: "16px",
     },
   },
@@ -108,6 +110,7 @@ type AppProps = {
 const App = ({ children }: AppProps) => (
   <div>
     <Grommet theme={theme} full={true}>
+      <FontStyles />
       <Helmet {...helmet} />
       {children}
     </Grommet>

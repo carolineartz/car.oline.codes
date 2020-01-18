@@ -144,8 +144,6 @@ export class LanguageStatusAnimation {
   }
 
   private resetTranslations(this: LanguageStatusAnimation): void {
-    console.log(`%c Exit`, "color: #B13254")
-
     this.timeline.totalProgress(1)
     this.timeline.clear()
     this.timeline.kill()

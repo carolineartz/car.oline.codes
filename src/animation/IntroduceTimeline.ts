@@ -3,17 +3,12 @@ import { gsap } from "gsap"
 const LOGO_PATH = "#caroline-logo .path"
 const DOT_GROUP = ".dot-group"
 const DOT = "#dot"
-const INTRO_TEXT = "#intro-text__im"
 const COMPOUND_PATH = "#caroline-logo .compound"
 
 const IntroduceTimeline = (): GSAPTimeline => {
   gsap.set(LOGO_PATH, { drawSVG: "0% 0%" })
   gsap.set(DOT_GROUP, { yPercent: 100 })
   gsap.set(COMPOUND_PATH, { autoAlpha: 0 })
-  gsap.set(INTRO_TEXT, { autoAlpha: 0 })
-
-  const fadeInText = (): GSAPTimeline =>
-    gsap.timeline({ delay: 0.5 }).to(INTRO_TEXT, { autoAlpha: 1, duration: 0.25, ease: "none" })
 
   const shimmer = (): GSAPTimeline =>
     gsap
@@ -64,10 +59,7 @@ const IntroduceTimeline = (): GSAPTimeline => {
       .add(shimmer(), "<")
   }
 
-  return gsap
-    .timeline()
-    .add(fadeInText())
-    .add(drawName())
+  return gsap.timeline().add(drawName())
 }
 
 export default IntroduceTimeline

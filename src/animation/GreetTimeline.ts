@@ -2,8 +2,6 @@ import { gsap } from "gsap"
 
 export const HAND_CONTAINER_ID = "hand-container"
 export const HAND_ID = "hand"
-
-export const HELLO_TEXT = "#intro-text__hello-there"
 export const CURSOR_CIRCLES = "#bg > div"
 
 const waveDuration = 0.1
@@ -26,9 +24,6 @@ const GreetTimeline = (): GSAPTimeline => {
     autoAlpha: 0,
   })
 
-  const fadeInText = (): GSAPTimeline =>
-    gsap.timeline().to(HELLO_TEXT, { autoAlpha: 1, duration: 0.25, ease: "none" })
-
   const hand = (): GSAPTimeline =>
     gsap
       .timeline({
@@ -49,10 +44,7 @@ const GreetTimeline = (): GSAPTimeline => {
         `+=${waves * waveDuration + 0.15}`
       )
 
-  return gsap
-    .timeline({ defaults: { ease: "power2.in", duration: 0.25 } })
-    .add(fadeInText())
-    .add(waveHello())
+  return gsap.timeline({ defaults: { ease: "power2.in", duration: 0.25 } }).add(waveHello())
 }
 
 export default GreetTimeline

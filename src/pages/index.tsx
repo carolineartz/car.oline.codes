@@ -78,6 +78,7 @@ const Content = ({ children }: ContentProps) => {
   if (typeof window !== `undefined`) {
     const position = usePointPosition()
 
+    // TODO: move these into useEffect
     gsap.set("#cursor", {
       x: position.x,
       y: position.y,
@@ -128,14 +129,11 @@ export default class extends PureComponent {
 
   animate = () => {
     CustomBounce.CustomBounce.create("myBounce", { strength: 0.6, squash: 2 })
-    gsap.set("#section-bongo-cat, #section-projects-intro, #bg > div", { autoAlpha: 0 })
 
     gsap
       .timeline()
       .add(greet())
       .add(introduce(), ">-3.5")
-      .addLabel("projects-intro")
-      .to("#section-projects-intro", { autoAlpha: 1 }, "<4.5")
   }
 
   render() {

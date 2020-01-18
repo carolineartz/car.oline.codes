@@ -1,34 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { gsap, Elastic } from "gsap"
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { sampleSize, random, round, without } from "lodash"
-import { PointPosition } from "../hooks/use-point-position"
-
+import { gsap } from "gsap"
+import { sampleSize, random, round } from "lodash"
 import SplitText from "gsap/SplitText"
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import GSDevTools from "gsap/GSDevTools"
 
-require("animation/bezier-easing.min.js")
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-class Picker<T> {
-  private readonly pickCount: () => number
-  readonly items: T[] // can be private but public now for logging
-
-  constructor(items: T[]) {
-    this.items = items
-
-    const mid: number = gsap.utils.clamp(1, Math.round(items.length / 2), items.length)
-    const max: number = gsap.utils.clamp(1, mid + 1, items.length)
-    const min: number = gsap.utils.clamp(1, mid - 1, items.length)
-
-    this.pickCount = gsap.utils.random([mid, max, min], true)
-  }
-
-  pick(): T[] {
-    return sampleSize(this.items, this.pickCount())
-  }
-}
+import { PointPosition } from "../hooks/use-point-position"
 
 type Translations = {
   pos: number
@@ -78,9 +52,9 @@ export class LanguageStatusAnimation {
     this.characters = splitText.chars
     this.numChars = random(3, 5)
     this._letters = sampleSize(this.characters, 3)
-    this.init()
     this.timeline = gsap.timeline({ autoRemoveChildren: true })
-    // GSDevTools.create({ animation: this.timeline })
+
+    this.init()
   }
 
   get letters() {
@@ -104,23 +78,13 @@ export class LanguageStatusAnimation {
     this.pointPosition = pointPosition
   }
 
-  // mouseenter
   private updateLetters(this: LanguageStatusAnimation): void {
-    // this.timeline.tweenTo("foo")
-    // this.timeline.removeLabel("foo")
-
-    console.log(`%c Enter`, "color: #5FC462")
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // const prevLetters: HTMLElement[] = this.letters
     const shuffled = this.characters.sort(() => 0.5 - Math.random())
+
     this._letters = shuffled.slice(0, this.numChars)
-    // this._letters = without(shuffled.slice(0, this.numChars), ...prevLetters)
-    console.log(this.element)
   }
 
   private translateLetters(this: LanguageStatusAnimation): void {
-    console.log(`%c Over`, "color: #FF7349")
-
     const bounds = this.element.getBoundingClientRect()
 
     const cursorPosition: { x: number; y: number } = this.pointPosition || {
@@ -145,12 +109,7 @@ export class LanguageStatusAnimation {
     for (const [index, letter] of this.letters.entries()) {
       this.timeline.to(letter, {
         duration: 1,
-        // ease: "expo.out",
         ease: "power3.out",
-        // stateAt: {
-        //   x: bounds.x,
-        //   y: bounds.y,
-        // },
         y: lineEq(
           lettersTranslations[index].pos,
           lettersTranslations[index].neg,
@@ -187,77 +146,68 @@ export class LanguageStatusAnimation {
   private resetTranslations(this: LanguageStatusAnimation): void {
     console.log(`%c Exit`, "color: #B13254")
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // const children = this.timeline.getChildren()
     this.timeline.totalProgress(1)
     this.timeline.clear()
     this.timeline.kill()
 
     this.timeline = gsap.timeline()
-    // eslint-disable-next-line no-debugger
-    // debugger
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const rand = random(0.5, 0.7, true)
-    const blah = () =>
-      gsap
-        .timeline()
-        .to(
-          this.letters,
-          {
-            duration: 0.2,
-            ease: "quad.out",
+    gsap
+      .timeline()
+      .to(
+        this.letters,
+        {
+          duration: 0.2,
+          ease: "quad.out",
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          y: pointPositionConditionalWithDefault("up", this.pointPosition, {
+            ifTrue: "-=80%",
+            ifFalse: "+=80%",
+          }),
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          rotation: pointPositionConditionalWithDefault("up", this.pointPosition, {
+            ifTrue: "-=10",
+            ifFalse: "+=10",
+          }),
+          opacity: 0,
+        },
+        0
+      )
+      .to(
+        this.letters,
+        {
+          duration: rand,
+          ease: "elastic.out",
+          startAt: {
             // eslint-disable-next-line @typescript-eslint/no-use-before-define
             y: pointPositionConditionalWithDefault("up", this.pointPosition, {
-              ifTrue: "-=80%",
-              ifFalse: "+=80%",
-            }),
-            // eslint-disable-next-line @typescript-eslint/no-use-before-define
-            rotation: pointPositionConditionalWithDefault("up", this.pointPosition, {
-              ifTrue: "-=10",
-              ifFalse: "+=10",
+              ifTrue: "80%",
+              ifFalse: "-80%",
             }),
             opacity: 0,
           },
-          0
-        )
-        .to(
-          this.letters,
-          {
-            duration: rand,
-            ease: "elastic.out",
-            startAt: {
-              // eslint-disable-next-line @typescript-eslint/no-use-before-define
-              y: pointPositionConditionalWithDefault("up", this.pointPosition, {
-                ifTrue: "80%",
-                ifFalse: "-80%",
-              }),
-              opacity: 0,
-            },
-            stagger: 0.02,
-            y: "0%",
-            opacity: 1,
-          },
-          "0.2"
-        )
-        .to(
-          this.letters,
-          {
-            // y: "0",
-            duration: rand,
-            stagger: 0.02,
-            rotation: "0%",
-            ease: "power1.out",
-          },
-          "+=0.19"
-        )
-        .call(this.reset.bind(this))
-    // GSDevTools.create({ animation: blah })
-    this.timeline.add(blah(), "foo")
-    console.log("end time", this.timeline.endTime())
+          stagger: 0.02,
+          y: "0%",
+          opacity: 1,
+        },
+        "0.2"
+      )
+      .to(
+        this.letters,
+        {
+          // y: "0",
+          duration: rand,
+          stagger: 0.02,
+          rotation: "0%",
+          ease: "power1.out",
+        },
+        "+=0.19"
+      )
+      .call(this.reset.bind(this))
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function pointPositionConditionalWithDefault(
   direction: "up" | "right" | "down" | "left",
   pointPosition?: PointPosition,

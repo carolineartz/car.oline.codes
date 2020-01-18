@@ -1,7 +1,15 @@
 import React, { PureComponent } from "react"
 import Helmet from "react-helmet"
 import styled from "styled-components"
+import GSDevTools from "gsap/GSDevTools"
 import { gsap } from "gsap"
+
+/* eslint-disable @typescript-eslint/no-var-requires */
+const DrawSVGPlugin = require("gsap/DrawSVGPlugin")
+const CustomEase = require("gsap/CustomEase")
+const CustomBounce = require("gsap/CustomBounce")
+const SplitText = require("gsap/SplitText")
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 import { Grid, Box } from "grommet"
 import { Background } from "components/index/Background"
@@ -9,21 +17,12 @@ import { Greeting } from "components/index/Greeting"
 import { ProjectsIntro } from "components/index/ProjectsIntro"
 import { TypingCat } from "components/index/TypingCat"
 import { LanguageStatus } from "components/index/LanguageStatus/LanguageStatus"
+import { ConnectLinks } from "components/ConnectLinks"
+import { ZigZagDivider } from "components/ZigZagDivider"
 import { usePointPosition } from "hooks/use-point-position"
-
-/* eslint-disable @typescript-eslint/no-var-requires */
-const DrawSVGPlugin = require("gsap/DrawSVGPlugin")
-const CustomEase = require("gsap/CustomEase")
-const CustomBounce = require("gsap/CustomBounce")
-const SplitText = require("gsap/SplitText")
-import GSDevTools from "gsap/GSDevTools"
-/* eslint-enable @typescript-eslint/no-var-requires */
 
 import greet from "animation/GreetTimeline"
 import introduce from "animation/IntroduceTimeline"
-
-// just for dev
-;(window as any).gsap = gsap
 
 const Cursor = styled.div`
   will-change: transform;
@@ -42,6 +41,8 @@ const GreetingArea = styled(Box)`
   /* Do this with theme var */
   color: #080d33;
   mix-blend-mode: lighten;
+  display: flex;
+  flex-direction: row;
 `
 
 const ProjectsIntroArea = styled(Box)`
@@ -51,7 +52,6 @@ const ProjectsIntroArea = styled(Box)`
   background: #080d33;
 `
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const TypingCatArea = styled(Box)`
   /* Do this with theme var */
   color: #080d33;
@@ -63,6 +63,10 @@ const LanguageStatusArea = styled(Box)`
   color: #ffffff;
   mix-blend-mode: darken;
   background: #080d33;
+`
+
+const BlendedConnectLinks = styled(ConnectLinks)`
+  mix-blend-mode: multiply;
 `
 
 type ContentProps = { children: React.ReactNode }
@@ -86,15 +90,17 @@ const Content = ({ children }: ContentProps) => {
     stagger: -0.1,
   })
 
+  // CSS grid does seem like overkill right now but adding the projects will make this more logical.
   return (
     <Grid
       rows={["1fr", "auto", "auto", "auto"]}
-      columns={["1/3", "2/3"]}
+      columns={["1/3", "auto", "46px", "min-content"]}
       areas={[
         { name: "greeting", start: [0, 0], end: [2, 0] },
-        { name: "language-status", start: [0, 1], end: [2, 1] },
-        { name: "typing-cat", start: [0, 2], end: [2, 2] },
-        { name: "projects-intro", start: [0, 3], end: [2, 3] },
+        { name: "top-connect-links", start: [3, 0], end: [3, 0] },
+        { name: "language-status", start: [0, 1], end: [3, 1] },
+        { name: "typing-cat", start: [0, 2], end: [3, 2] },
+        { name: "projects-intro", start: [0, 3], end: [3, 3] },
       ]}
     >
       {children}
@@ -109,8 +115,6 @@ export default class extends PureComponent {
   }
 
   componentDidMount() {
-    // GSDevTools.create()
-
     this.animate()
   }
 
@@ -136,7 +140,12 @@ export default class extends PureComponent {
           <Content>
             <GreetingArea background="light-1" gridArea="greeting">
               <Greeting />
+              <ZigZagDivider backgroundBefore="white" backgroundAfter="white" />
             </GreetingArea>
+            <BlendedConnectLinks
+              gridArea="top-connect-links"
+              pad={{ vertical: "medium", right: "medium", left: "xlarge" }}
+            />
             <LanguageStatusArea background="brand" gridArea="language-status">
               <LanguageStatus />
             </LanguageStatusArea>

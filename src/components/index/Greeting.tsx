@@ -8,7 +8,7 @@ import { Box } from "grommet"
 import { ResponsiveText } from "components/ResponsiveText"
 
 export const Greeting = () => (
-  <Box>
+  <Box flex="grow">
     <Box direction="row" pad="medium" align="baseline">
       <Box basis="1/3" height={{ min: "160px", max: "360px" }} id={HAND_CONTAINER_ID}>
         <Hand id={HAND_ID} />

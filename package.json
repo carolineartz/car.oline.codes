@@ -37,7 +37,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.3.7",
     "gsap": "./gsap-bonus.tgz",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "polished": "^3.4.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

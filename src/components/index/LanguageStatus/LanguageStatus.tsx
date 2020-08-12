@@ -46,7 +46,8 @@ export class LanguageStatus extends React.PureComponent<{}, LanguageStatusState>
     // TODO: type check this response
     const currentLanguageData: any | undefined = await currentLanguageResponse.json()
 
-    if (currentLanguageData) {
+    if (currentLanguageData && !currentLanguageData.error) {
+      console.log(currentLanguageData)
       const currentLanguage: string = currentLanguageData.values[0][0]
 
       this.setState({ currentLanguage })

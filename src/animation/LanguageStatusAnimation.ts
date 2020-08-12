@@ -37,11 +37,11 @@ const lineEq = (y2: number, y1: number, x2: number, x1: number, currentVal: numb
 }
 
 export class LanguageStatusAnimation {
-  characters: HTMLElement[]
+  characters: Element[]
   pointPosition?: PointPosition
 
   private element: HTMLElement
-  private _letters: HTMLElement[] // the randomly picked ones; don't
+  private _letters: Element[] // the randomly picked ones; don't
   private numChars: number
   private timeline: GSAPTimeline
 

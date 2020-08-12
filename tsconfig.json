@@ -39,5 +39,6 @@
     "preserveConstEnums": true
   },
   // Specifies a list of glob patterns that match files to be included in compilation.
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules"]
 }

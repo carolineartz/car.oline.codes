@@ -7,3 +7,5 @@ module "react" {
     css?: CSSProp;
   }
 }
+
+declare module "*.svg";

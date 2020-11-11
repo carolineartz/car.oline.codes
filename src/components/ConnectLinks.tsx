@@ -8,6 +8,8 @@ type ConnectLinksProps = BoxProps & {
   color?: ColorType
 }
 
+type Foo = React.FormEvent
+
 export const ConnectLinks = ({
   color = "accent-3",
   flex = false,

@@ -35,13 +35,3 @@ export const CodingCatEmbed = () => {
     </Box>
   );
 };
-
-function load(url: string, script: HTMLScriptElement) {
-  return new Promise(function (resolve, reject) {
-    script.type = "text/javascript";
-    script.async = true;
-    script.src = url;
-    script.onload = resolve;
-    script.onerror = reject;
-  });
-}

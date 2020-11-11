@@ -1,9 +1,8 @@
-import "styled-components/macro";
+import { Anchor, Box, Heading, Image, ResponsiveContext, Text } from "grommet";
+import { Github, Share } from "grommet-icons";
 import React from "react";
-
-import { Box, Heading, Anchor, Text, Image, ResponsiveContext } from "grommet";
 import BrowserFrame from "react-browser-frame";
-import { Share, Github } from "grommet-icons";
+import "styled-components/macro";
 
 type PortfolioItemProps = {
   label: string;

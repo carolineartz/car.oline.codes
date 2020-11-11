@@ -1,12 +1,11 @@
+import { Box, Grommet, Heading, HeadingProps, ResponsiveContext } from "grommet";
 import React from "react";
-
-import "styled-components/macro";
-import { GlobalStyles } from "./globalStyles";
-import { Grommet, Box, Text, Heading, ResponsiveContext, HeadingProps } from "grommet";
-import { theme } from "./theme";
-import { CodingCatEmbed } from "../CodingCatEmbed";
 import styled from "styled-components";
+import "styled-components/macro";
+import { CodingCatEmbed } from "../CodingCatEmbed";
 import { Projects } from "./../Projects";
+import { GlobalStyles } from "./globalStyles";
+import { theme } from "./theme";
 
 const AppContent = () => {
   const screenSize = React.useContext(ResponsiveContext);
@@ -53,7 +52,7 @@ const HeadingText = styled(Heading)<HeadingTextProps>`
   pointer-events: none;
 `;
 
-export default () => {
+export const App = () => {
   return (
     <Grommet css="min-height: 100vh; background-color: #1a1e2d;" theme={theme}>
       <GlobalStyles />

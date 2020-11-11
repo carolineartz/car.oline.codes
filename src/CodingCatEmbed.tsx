@@ -1,37 +1,17 @@
 import React from "react";
-import HTMLReactParser from "html-react-parser";
 import { Box } from "grommet";
 
-import loadjs from "loadjs";
-
-const EMBED_MODULE = "https://static.codepen.io/assets/embed/ei.js";
-
 export const CodingCatEmbed = () => {
-  const [isScriptLoaded, setIsScriptLoaded] = React.useState(false);
-  const scriptRef = React.createRef<HTMLScriptElement>();
-  const [embedSrc, setEmbedSrc] = React.useState("");
-
-  React.useEffect(() => {
-    (async () => {
-      try {
-        await loadjs([EMBED_MODULE], { returnPromise: true });
-        setIsScriptLoaded(true);
-      } catch (e) {
-        console.log("WOMP WOMP");
-      }
-    })();
-  }, [loadjs, setIsScriptLoaded, isScriptLoaded]);
-
   return (
-    <Box width="100%" height="100vh">
-      {/* <Box>{injectedCodePen}</Box> */}
+    <Box width="100%" height="100vh" background="#1b1e2d">
       {true && (
-        <Box key="foo" align="end" justify="end">
+        <Box key="foo" align="end" justify="end" background="#1b1e2d">
           <iframe
             height="100%"
             style={{
               // width: "80%",
               maxHeight: "100%",
+              backgroundColor: "#1b1e2d",
               height: "100vh",
               // height: "75vh",
               // maxHeight: "75vh",

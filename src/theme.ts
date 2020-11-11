@@ -13,7 +13,7 @@ export const theme: ThemeType = deepFreeze(
           light: "rgba(39, 36, 66, 1.000)",
         },
         brand: "#f95152",
-        "accent-1": "#3BD2D3",
+        "accent-1": "#1b1e2d",
         "accent-2": "#CBE580",
         "accent-3": "#74DEDA",
       },

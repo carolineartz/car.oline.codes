@@ -15,7 +15,8 @@ export const theme: ThemeType = deepFreeze(
         brand: "#f95152",
         "accent-1": "#3BD2D3",
         "accent-2": "#CBE580",
-        "accent-3": "#74DEDA",
+        "accent-3": "#3e90de",
+        "accent-4": "#1b1e2d",
       },
     },
     anchor: {

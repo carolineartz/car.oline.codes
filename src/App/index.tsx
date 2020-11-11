@@ -5,26 +5,31 @@ import { GlobalStyles } from "./globalStyles";
 import { Grommet, Box, Text, Heading, ResponsiveContext, HeadingProps } from "grommet";
 import { theme } from "./theme";
 import { CodingCatEmbed } from "../CodingCatEmbed";
-import { Portfolio } from "../Portfolo";
 import styled from "styled-components";
+import { Projects } from "./../Projects";
 
 const AppContent = () => {
   const screenSize = React.useContext(ResponsiveContext);
   console.log(screenSize);
-  const [size] = screenSize === "small" ? ["100px"] : screenSize === "medium" ? ["150px"] : ["150px"];
+  const size = screenSize === "small" ? "65px" : "140px";
   return (
     <>
       {/* "page" 1 - intro*/}
       <Box id="section-intro" height="100vh" tag="section">
-        <HeadingText fontSize={size}>CAROLINE ARTZ</HeadingText>
+        <Box pad="medium">
+          <HeadingText fontSize={size}>
+            CAROLINE
+            <br />
+            ARTZ
+          </HeadingText>
+        </Box>
         <Box justify="center" align="center" height={{ min: "100vh" }}>
           <CodingCatEmbed />
         </Box>
       </Box>
       {/* "page" 2 - portfolio */}
-
-      <Box id="section-portfolio" height="100vh" tag="section" background="white">
-        <Portfolio />
+      <Box id="section-portfolio" height={{ min: "100vh" }} pad="medium" tag="section" background="white">
+        <Projects />
       </Box>
     </>
   );

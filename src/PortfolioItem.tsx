@@ -14,6 +14,7 @@ type PortfolioItemProps = {
   children?: React.ReactNode;
   imagePaths?: string[];
   iframe?: JSX.Element;
+  direction?: "right" | "left";
 };
 
 export const PortfolioItem = ({
@@ -25,17 +26,33 @@ export const PortfolioItem = ({
   children,
   imagePaths = [],
   iframe,
+  direction = "left",
 }: PortfolioItemProps) => {
   const size = React.useContext(ResponsiveContext);
+  const flexDir = size !== "small" && direction === "right" ? "row-reverse" : "row-responsive";
 
   return (
-    <Box fill pad="small">
-      <Box direction="row-responsive" gap="medium">
-        <Box width={{ max: size !== "small" ? "40vw" : undefined }}>
+    <Box
+      pad={{ horizontal: "medium", bottom: "xlarge" }}
+      alignSelf="center"
+      width="100%"
+      border={
+        size === "small"
+          ? {
+              color: "brand",
+              size: "medium",
+              style: "dashed",
+              side: "bottom",
+            }
+          : undefined
+      }
+    >
+      <Box direction={flexDir} gap="large">
+        <Box width={{ max: size !== "small" ? "50%" : undefined }}>
           <Box>
             <Heading color="brand" level="2">
               {label}
-              <Anchor href={link} icon={<Share />} />
+              <Anchor href={link} icon={<Share />} target="_blank" />
             </Heading>
             {Boolean(github) && (
               <Text margin={{ bottom: "medium" }} color="accent-3">
@@ -49,12 +66,12 @@ export const PortfolioItem = ({
             </Text>
           )}
           {children}
-          <Box pad={{ horizontal: "small" }}>{technologyList}</Box>
+          <Box pad={{ vertical: "medium" }}>{technologyList}</Box>
         </Box>
-        <Box gap="small">
+        <Box gap="small" width={iframe || size === "small" ? "100%" : "50%"}>
           {imagePaths.map((path) => {
             return (
-              <Box key={path} width={{ max: "40vw" }}>
+              <Box key={path}>
                 <BrowserFrame>
                   <Image width="100%" fit="contain" src={path} />
                 </BrowserFrame>

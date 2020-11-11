@@ -1,13 +1,13 @@
 /// <reference types="react-scripts" />
 
-import { CSSProp } from "styled-components";
-
-module "react" {
-  interface Attributes {
-    css?: CSSProp;
+declare namespace React {
+  interface HTMLAttributes<T> extends DOMAttributes<T> {
+    css?: any;
   }
 }
 
 declare module "*.svg";
+
+type foo = CSSProp;
 
 declare type PropsOf<TComponent> = TComponent extends React.ComponentType<infer P> ? P : never;

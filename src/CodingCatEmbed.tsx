@@ -9,13 +9,9 @@ export const CodingCatEmbed = () => {
           <iframe
             height="100%"
             style={{
-              // width: "80%",
               maxHeight: "100%",
               backgroundColor: "#1b1e2d",
               height: "100vh",
-              // height: "75vh",
-              // maxHeight: "75vh",
-              // maxWidth: "80vw",
               width: "100%",
               background: "transparent",
             }}

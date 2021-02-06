@@ -4,7 +4,6 @@ import { Text, Anchor, Heading, Box, ThemeContext, ThemeType } from "grommet";
 import React from "react";
 import { PortfolioItem } from "./PortfolioItem";
 import { TechnologyList } from "./TechnologiesList";
-import { ThemeConsumer } from "styled-components/macro";
 
 export const Projects = () => {
   return (
@@ -133,9 +132,6 @@ const MagneticCodePenLogo = () => {
 };
 
 const ProjectIframe = ({ penId, height = 300, title }: { penId: string; height?: number; title: string }) => {
-  const theme: ThemeType = React.useContext(ThemeContext);
-  const brandColor = theme.global?.colors?.brand || "black";
-
   return (
     <iframe
       style={{

@@ -19,7 +19,7 @@ export const CodingCatEmbed = () => {
             title="Bongo Cat Codes #2 - Jamming"
             src="https://codepen.io/carolineartz/embed/qBOEzQa?height=300&theme-id=39339&default-tab=result"
             frameBorder="no"
-            allowTransparency
+            // allowtransparency
             allowFullScreen
           >
             See the Pen <a href="https://codepen.io/carolineartz/pen/qBOEzQa">Bongo Cat Codes #2 - Jamming</a>{" "}

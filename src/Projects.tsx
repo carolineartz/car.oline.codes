@@ -1,9 +1,10 @@
 import "styled-components/macro";
 
-import { Text, Anchor, Heading, Box } from "grommet";
+import { Text, Anchor, Heading, Box, ThemeContext, ThemeType } from "grommet";
 import React from "react";
 import { PortfolioItem } from "./PortfolioItem";
 import { TechnologyList } from "./TechnologiesList";
+import { ThemeConsumer } from "styled-components/macro";
 
 export const Projects = () => {
   return (
@@ -77,24 +78,10 @@ const BoxSizingApp = () => {
   return (
     <PortfolioItem
       direction="right"
-      label="Interactive Box-Sizing Diagram"
+      label="Interactive Box-Model Diagram"
       link="https://codepen.io/carolineartz/details/ogVXZj"
       technologyList={<TechnologyList angular />}
-      iframe={
-        <iframe
-          height="100%"
-          style={{ width: "100%", minHeight: "60vh" }}
-          scrolling="no"
-          title="angular interactive box-model diagram"
-          src="https://codepen.io/carolineartz/embed/ogVXZj?height=533&theme-id=14337&default-tab=result"
-          loading="lazy"
-        >
-          See the Pen{" "}
-          <a href="https://codepen.io/carolineartz/pen/ogVXZj">angular interactive box-model diagram</a> by
-          Caroline Artz (<a href="https://codepen.io/carolineartz">@carolineartz</a>) on{" "}
-          <a href="https://codepen.io">CodePen</a>.
-        </iframe>
-      }
+      iframe={<ProjectIframe penId="ogVXZj" height={533} title="angular interactive box-model diagram" />}
     >
       <Text>
         An Angular.js app to visualize the box-model. Controls for changing the value of box-sizing highlight
@@ -116,19 +103,7 @@ const SpotlightCursor = () => {
       label="Spotlight Cursor Text"
       link="https://codepen.io/carolineartz/details/rNaGQYo"
       technologyList={<TechnologyList gsap />}
-      iframe={
-        <iframe
-          style={{ width: "100%", minHeight: "60vh" }}
-          scrolling="no"
-          title="Spotlight Cursor Text Screen"
-          src="https://codepen.io/carolineartz/embed/rNaGQYo?height=300&theme-id=14337&default-tab=result"
-          loading="lazy"
-        >
-          See the Pen <a href="https://codepen.io/carolineartz/pen/rNaGQYo">Spotlight Cursor Text Screen</a>{" "}
-          by Caroline Artz (<a href="https://codepen.io/carolineartz">@carolineartz</a>) on{" "}
-          <a href="https://codepen.io">CodePen</a>.
-        </iframe>
-      }
+      iframe={<ProjectIframe penId="rNaGQYo" title="Spotlight Cursor Text Screen" />}
     />
   );
 };
@@ -140,19 +115,7 @@ const GSAPNameAnimation = () => {
       direction="right"
       link="https://codepen.io/carolineartz/details/rNaGQYo"
       technologyList={<TechnologyList gsap />}
-      iframe={
-        <iframe
-          style={{ width: "100%", minHeight: "60vh" }}
-          scrolling="no"
-          title="GSAP Name Animation"
-          src="https://codepen.io/carolineartz/embed/gOaQxWL?height=300&theme-id=14337&default-tab=result"
-          loading="lazy"
-        >
-          See the Pen <a href="https://codepen.io/carolineartz/pen/gOaQxWL">GSAP Practice </a> by Caroline
-          Artz (<a href="https://codepen.io/carolineartz">@carolineartz</a>) on{" "}
-          <a href="https://codepen.io">CodePen</a>.
-        </iframe>
-      }
+      iframe={<ProjectIframe penId="gOaQxWL" title="GSAP Name Animation" />}
     />
   );
 };
@@ -164,19 +127,35 @@ const MagneticCodePenLogo = () => {
       text="A P5.js demo presented at the April 2015 CodePen Chicago Meetup."
       link="https://codepen.io/carolineartz/details/NPZJVz"
       technologyList={<TechnologyList p5js />}
-      iframe={
-        <iframe
-          style={{ width: "100%", minHeight: "60vh" }}
-          scrolling="no"
-          title="p5js magnetic codepen logo "
-          src="https://codepen.io/carolineartz/embed/NPZJVz?height=300&theme-id=14337&default-tab=result"
-          loading="lazy"
-        >
-          See the Pen <a href="https://codepen.io/carolineartz/pen/NPZJVz">p5js magnetic codepen logo </a> by
-          Caroline Artz (<a href="https://codepen.io/carolineartz">@carolineartz</a>) on{" "}
-          <a href="https://codepen.io">CodePen</a>.
-        </iframe>
-      }
+      iframe={<ProjectIframe penId="NPZJVz" title="p5js magnetic codepen logo" />}
     />
+  );
+};
+
+const ProjectIframe = ({ penId, height = 300, title }: { penId: string; height?: number; title: string }) => {
+  const theme: ThemeType = React.useContext(ThemeContext);
+  const brandColor = theme.global?.colors?.brand || "black";
+
+  return (
+    <iframe
+      style={{
+        width: "100%",
+        minHeight: "60vh",
+        border: "none",
+        // border: `3px solid ${brandColor}`,
+        // borderRadius: "4px",
+        padding: "10px",
+        boxSizing: "border-box",
+      }}
+      scrolling="no"
+      seamless
+      title={title}
+      src={`https://codepen.io/carolineartz/embed/${penId}?height=${height}&theme-id=39356&default-tab=result`}
+      // loading="lazy"
+    >
+      See the Pen <a href={`https://codepen.io/carolineartz/pen/${penId}`}>{title} </a> by Caroline Artz (
+      <a href="https://codepen.io/carolineartz">@carolineartz</a>) on <a href="https://codepen.io">CodePen</a>
+      .
+    </iframe>
   );
 };

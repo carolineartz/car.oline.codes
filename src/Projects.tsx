@@ -1,6 +1,6 @@
 import "styled-components/macro";
 
-import { Text, Anchor, Heading, Box, ThemeContext, ThemeType } from "grommet";
+import { Text, Anchor, Heading, Box } from "grommet";
 import React from "react";
 import { PortfolioItem } from "./PortfolioItem";
 import { TechnologyList } from "./TechnologiesList";

@@ -1,9 +1,10 @@
 import "styled-components/macro";
 
-import { Text, Anchor, Heading, Box } from "grommet";
+import { Text, Anchor, Heading, Box, ThemeContext, ThemeType } from "grommet";
 import React from "react";
 import { PortfolioItem } from "./PortfolioItem";
 import { TechnologyList } from "./TechnologiesList";
+import { ThemeConsumer } from "styled-components/macro";
 
 export const Projects = () => {
   return (
@@ -132,13 +133,25 @@ const MagneticCodePenLogo = () => {
 };
 
 const ProjectIframe = ({ penId, height = 300, title }: { penId: string; height?: number; title: string }) => {
+  const theme: ThemeType = React.useContext(ThemeContext);
+  const brandColor = theme.global?.colors?.brand || "black";
+
   return (
     <iframe
-      style={{ width: "100%", minHeight: "60vh", border: "none" }}
+      style={{
+        width: "100%",
+        minHeight: "60vh",
+        border: "none",
+        // border: `3px solid ${brandColor}`,
+        // borderRadius: "4px",
+        padding: "10px",
+        boxSizing: "border-box",
+      }}
       scrolling="no"
+      seamless
       title={title}
       src={`https://codepen.io/carolineartz/embed/${penId}?height=${height}&theme-id=39356&default-tab=result`}
-      loading="lazy"
+      // loading="lazy"
     >
       See the Pen <a href={`https://codepen.io/carolineartz/pen/${penId}`}>{title} </a> by Caroline Artz (
       <a href="https://codepen.io/carolineartz">@carolineartz</a>) on <a href="https://codepen.io">CodePen</a>

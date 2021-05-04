@@ -3,31 +3,40 @@ import React from "react";
 import styled from "styled-components";
 import "styled-components/macro";
 import { CodingCatEmbed } from "../CodingCatEmbed";
+import useDeferredMount from "../useDeferredMount";
 import { Projects } from "./../Projects";
 import { GlobalStyles } from "./globalStyles";
 import { theme } from "./theme";
+import { Fade } from "react-awesome-reveal";
 
 const AppContent = () => {
+  const shouldMount = useDeferredMount()
   const screenSize = React.useContext(ResponsiveContext);
-  console.log(screenSize);
   const size = screenSize === "small" ? "65px" : "140px";
+
   return (
     <>
-      {/* "page" 1 - intro*/}
-      <Box id="section-intro" height="100vh" tag="section">
-        <Box pad="medium">
-          <HeadingText fontSize={size}>
-            CAROLINE
-            <br />
-            ARTZ
-          </HeadingText>
+      <Fade>
+        <Box
+          id="section-intro"
+          height="100vh"
+          tag="section"
+          style={{ visibility: shouldMount ? "visible" : "hidden" }}
+          background="#1b1e2d"
+        >
+          <Box pad="medium">
+            <HeadingText fontSize={size}>
+              CAROLINE
+                <br />
+                ARTZ
+            </HeadingText>
+          </Box>
+          <Box justify="center" align="center">
+            <CodingCatEmbed />
+          </Box>
         </Box>
-        <Box justify="center" align="center" height={{ min: "100vh" }}>
-          <CodingCatEmbed />
-        </Box>
-      </Box>
-      {/* "page" 2 - portfolio */}
-      <Box id="section-portfolio" height={{ min: "100vh" }} pad="medium" tag="section" background="white">
+      </Fade>
+      <Box id="section-portfolio" pad="medium" tag="section" background="white">
         <Projects />
       </Box>
     </>
@@ -39,17 +48,16 @@ type HeadingTextProps = HeadingProps & {
 };
 
 const HeadingText = styled(Heading)<HeadingTextProps>`
-  /* font-family: CoreCircus; */
-  font-family: Livvic;
+  font-family: Livvic, sans-sarif;
   font-weight: 900;
   text-shadow: 0.09em 0.09em 0px #a5cbcc;
-  // text-shadow: 10px 10px 0px #3f7fbf;
   position: absolute;
   font-size: ${(props) => props.fontSize};
   mix-blend-mode: color-dodge;
   color: black;
   line-height: 1;
   pointer-events: none;
+  text-transform: uppercase;
 `;
 
 export const App = () => {

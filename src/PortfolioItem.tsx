@@ -12,7 +12,7 @@ type PortfolioItemProps = {
   technologyList: JSX.Element;
   children?: React.ReactNode;
   imagePaths?: string[];
-  iframe?: JSX.Element;
+  slug?: string
   direction?: "right" | "left";
 };
 
@@ -24,7 +24,7 @@ export const PortfolioItem = ({
   technologyList,
   children,
   imagePaths = [],
-  iframe,
+  slug,
   direction = "left",
 }: PortfolioItemProps) => {
   const size = React.useContext(ResponsiveContext);
@@ -67,7 +67,7 @@ export const PortfolioItem = ({
           {children}
           <Box pad={{ vertical: "medium" }}>{technologyList}</Box>
         </Box>
-        <Box gap="small" width={iframe || size === "small" ? "100%" : "50%"}>
+        <Box gap="small" width={size === "small" ? "100%" : "50%"}>
           {imagePaths.map((path) => {
             return (
               <Box key={path}>
@@ -77,7 +77,20 @@ export const PortfolioItem = ({
               </Box>
             );
           })}
-          <Box width="100%">{iframe}</Box>
+          {slug && (<Box width="100%">
+            <p
+              className="codepen"
+              data-height="500"
+              data-theme-id="39356"
+              data-default-tab="result"
+              data-user="carolineartz"
+              data-slug-hash={slug}
+              css="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+              data-pen-title={label}
+            >
+              <span>See the Pen <a href="https://codepen.io/carolineartz/pen/ogVXZj">{label}</a> by Caroline Artz (<a href="https://codepen.io/carolineartz">@carolineartz</a>) on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+          </Box>)}
         </Box>
       </Box>
     </Box>

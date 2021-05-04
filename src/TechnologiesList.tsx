@@ -2,7 +2,6 @@ import React from "react";
 import "styled-components/macro";
 
 import { Box, Text } from "grommet";
-import { CSSTransition } from "react-transition-group";
 
 import { ReactComponent as CssDoodleLogo } from "./logos/css-doodle.svg";
 import { ReactComponent as FirebaseLogo } from "./logos/firebase.svg";
@@ -83,17 +82,26 @@ const AnimatedTechnologyName = ({ logo: Logo, label, color }: AnimatedTechnology
       width="2em"
       height="4em"
       overflow="visible"
-      onMouseOver={() => setShowLabel(true)}
-      onMouseLeave={() => setShowLabel(false)}
+
     >
-      <Box width="2em" height="2em">
+      <Box
+        width="2em"
+        height="2em"
+        onMouseOver={() => setShowLabel(true)}
+        onMouseLeave={() => setShowLabel(false)}
+      >
         <Logo />
       </Box>
-      <CSSTransition in={showLabel} timeout={300} classNames="technology-name" unmountOnExit>
+      <Box align="center" animation={{
+        type: showLabel ? "fadeIn" : "fadeOut",
+        duration: 300,
+        size: "large"
+
+      }}>
         <Text size="small" color={color} css="word-break: keep-all; white-space: nowrap">
           {label}
         </Text>
-      </CSSTransition>
+        </Box>
     </Box>
   );
 };

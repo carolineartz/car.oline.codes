@@ -1,28 +1,53 @@
 import "styled-components/macro";
 
-import { Text, Anchor, Heading, Box } from "grommet";
-import React from "react";
+import { Text, Anchor, Heading, Box, Spinner } from "grommet";
+import React, {Suspense} from "react";
 import { PortfolioItem } from "./PortfolioItem";
 import { TechnologyList } from "./TechnologiesList";
+import { Fade } from "react-awesome-reveal";
+
+import loadjs from "loadjs"
 
 export const Projects = () => {
+  const [resource, setResource] = React.useState<undefined | boolean>()
+
+  React.useEffect(() => {
+    loadjs("https://cpwebassets.codepen.io/assets/embed/ei.js", {returnPromise: true})
+      .then(() => {
+        setResource(true)
+      })
+      .catch(function (pathsNotFound) {
+        console.log(pathsNotFound)
+       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Box>
       <Heading color="accent-4" level="1" css="margin-bottom: 2rem" size="large">
         Selected Projects
       </Heading>
       <Box gap="large" width={{ max: "1200px" }} alignSelf="center">
-        <PatternParty />
-        <ShareASketch />
-        <ElmInTheSpring />
-        <BoxSizingApp />
-        <SpotlightCursor />
-        <GSAPNameAnimation />
-        <MagneticCodePenLogo />
+        <EachProject resource={resource} />
       </Box>
     </Box>
   );
 };
+
+const EachProject = ({resource}: {resource: boolean | undefined}) => {
+  return (<Suspense fallback={<Spinner />}>
+    <Fade >
+      <PatternParty />
+      <ShareASketch />
+      <ElmInTheSpring />
+      <BoxSizingApp resource={resource}  />
+      <SpotlightCursor resource={resource} />
+      <GSAPNameAnimation resource={resource}  />
+      <MagneticCodePenLogo resource={resource}  />
+    </Fade>
+
+  </Suspense>)
+}
 
 const PatternParty = (): JSX.Element => {
   return (
@@ -73,14 +98,16 @@ const ElmInTheSpring = (): JSX.Element => {
   );
 };
 
-const BoxSizingApp = () => {
+const BoxSizingApp = ({resource: _resource}: {resource: boolean | undefined}) => {
   return (
     <PortfolioItem
       direction="right"
       label="Interactive Box-Model Diagram"
       link="https://codepen.io/carolineartz/details/ogVXZj"
       technologyList={<TechnologyList angular />}
-      iframe={<ProjectIframe penId="ogVXZj" height={533} title="angular interactive box-model diagram" />}
+      slug="ogVXZj"
+      // percentWidth={60}
+      // iframe={<ProjectIframe penId="ogVXZj" height={533} title="angular interactive box-model diagram" />}
     >
       <Text>
         An Angular.js app to visualize the box-model. Controls for changing the value of box-sizing highlight
@@ -96,62 +123,47 @@ const BoxSizingApp = () => {
   );
 };
 
-const SpotlightCursor = () => {
+const SpotlightCursor = ({resource: _resource}: {resource: boolean | undefined}) => {
   return (
     <PortfolioItem
       label="Spotlight Cursor Text"
       link="https://codepen.io/carolineartz/details/rNaGQYo"
+      slug="rNaGQYo"
       technologyList={<TechnologyList gsap />}
-      iframe={<ProjectIframe penId="rNaGQYo" title="Spotlight Cursor Text Screen" />}
-    />
+    >
+      <Text>
+        <Anchor
+          href="https://codepen.io/2020/popular/pens/3"
+          label="75th most ❤️ hearted pen of 2020"
+        />
+
+      </Text>
+    </PortfolioItem>
   );
 };
 
-const GSAPNameAnimation = () => {
+const GSAPNameAnimation = ({resource: _resource}: {resource: boolean | undefined})  => {
   return (
     <PortfolioItem
       label="Name Animation"
       direction="right"
       link="https://codepen.io/carolineartz/details/rNaGQYo"
       technologyList={<TechnologyList gsap />}
-      iframe={<ProjectIframe penId="gOaQxWL" title="GSAP Name Animation" />}
-    />
+      slug="gOaQxWL"
+    >
+      <Box />
+    </PortfolioItem>
   );
 };
 
-const MagneticCodePenLogo = () => {
+const MagneticCodePenLogo = ({resource: _resource}: {resource: boolean | undefined})  => {
   return (
     <PortfolioItem
       label="Magnetic CodePen Logo"
       text="A P5.js demo presented at the April 2015 CodePen Chicago Meetup."
       link="https://codepen.io/carolineartz/details/NPZJVz"
       technologyList={<TechnologyList p5js />}
-      iframe={<ProjectIframe penId="NPZJVz" title="p5js magnetic codepen logo" />}
+      slug="NPZJVz"
     />
-  );
-};
-
-const ProjectIframe = ({ penId, height = 300, title }: { penId: string; height?: number; title: string }) => {
-  return (
-    <iframe
-      style={{
-        width: "100%",
-        minHeight: "60vh",
-        border: "none",
-        // border: `3px solid ${brandColor}`,
-        // borderRadius: "4px",
-        padding: "10px",
-        boxSizing: "border-box",
-      }}
-      scrolling="no"
-      seamless
-      title={title}
-      src={`https://codepen.io/carolineartz/embed/${penId}?height=${height}&theme-id=39356&default-tab=result`}
-      // loading="lazy"
-    >
-      See the Pen <a href={`https://codepen.io/carolineartz/pen/${penId}`}>{title} </a> by Caroline Artz (
-      <a href="https://codepen.io/carolineartz">@carolineartz</a>) on <a href="https://codepen.io">CodePen</a>
-      .
-    </iframe>
   );
 };

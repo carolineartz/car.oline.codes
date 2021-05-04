@@ -5,7 +5,6 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #1a1e2d;
     overflow-x: hidden;
   }
 

@@ -34,18 +34,19 @@ export const Projects = () => {
 };
 
 const EachProject = ({resource}: {resource: boolean | undefined}) => {
-  return (<Suspense fallback={<Spinner />}>
-    <Fade >
-      <PatternParty />
-      <ShareASketch />
-      <ElmInTheSpring />
-      <BoxSizingApp resource={resource}  />
-      <SpotlightCursor resource={resource} />
-      <GSAPNameAnimation resource={resource}  />
-      <MagneticCodePenLogo resource={resource}  />
-    </Fade>
-
-  </Suspense>)
+  return (
+    <Suspense fallback={<Spinner />}>
+      <Fade >
+        <PatternParty />
+        <ShareASketch />
+        <ElmInTheSpring />
+        <BoxSizingApp resource={resource}  />
+        <SpotlightCursor resource={resource} />
+        <GSAPNameAnimation resource={resource}  />
+        <MagneticCodePenLogo resource={resource}  />
+      </Fade>
+    </Suspense>
+  )
 }
 
 const PatternParty = (): JSX.Element => {

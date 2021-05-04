@@ -24,21 +24,19 @@ const AppContent = () => {
           style={{ visibility: shouldMount ? "visible" : "hidden" }}
           background="#1b1e2d"
         >
-        <Box pad="medium">
-          <HeadingText fontSize={size}>
-            CAROLINE
-              <br />
-              ARTZ
+          <Box pad="medium">
+            <HeadingText fontSize={size}>
+              CAROLINE
+                <br />
+                ARTZ
             </HeadingText>
+          </Box>
+          <Box justify="center" align="center">
+            <CodingCatEmbed />
+          </Box>
         </Box>
-          <Box justify="center" align="center" height={{ min: "100vh" }}>
-
-          <CodingCatEmbed />
-        </Box>
-        </Box>
-        </Fade>
-
-      <Box id="section-portfolio" height={{ min: "100vh" }} pad="medium" tag="section" background="white">
+      </Fade>
+      <Box id="section-portfolio" pad="medium" tag="section" background="white">
         <Projects />
       </Box>
     </>

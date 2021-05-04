@@ -19,7 +19,6 @@ export const Projects = () => {
       .catch(function (pathsNotFound) {
         console.log(pathsNotFound)
        });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -55,7 +54,7 @@ const PatternParty = (): JSX.Element => {
       label="Pattern Party"
       link="https://svg-pattern.party"
       github="https://github.com/carolineartz/pattern-party"
-      imagePaths={["assets/Pattern_Party.png"]}
+      imagePaths={["assets/pattern-party.gif"]}
       technologyList={<TechnologyList react cssDoodle firebase grommet styledComponents typescript />}
     >
       <Text color="accent-4" margin={{ bottom: "medium" }}>
@@ -74,7 +73,7 @@ const ShareASketch = (): JSX.Element => {
       text="Web app with two modes, each updating in realtime sync across all connected users."
       link="https://share-a-sketch.web.app"
       github="https://github.com/carolineartz/share-a-sketch"
-      imagePaths={["assets/Share_a_Sketch_Shapes.png", "assets/Share_a_Sketch_Draw.png"]}
+      imagePaths={["assets/share-a-sketch-shapes.gif", "assets/share-a-sketch-draw.gif"]}
       technologyList={<TechnologyList react firebase grommet styledComponents typescript />}
     >
       <Text css="padding-bottom: 1em">
@@ -92,7 +91,7 @@ const ElmInTheSpring = (): JSX.Element => {
       text="Website for the 2019 Elm in the Spring Conference, an Elm language event (co-organizer)."
       link="https://2019.elminthespring.org"
       github="https://github.com/elm-in-the-spring/conference-2019"
-      imagePaths={["assets/Elm_in_the_Spring_2019_Conference.png"]}
+      imagePaths={["assets/eits-conference-2019.gif"]}
       technologyList={<TechnologyList elm postcss />}
     />
   );

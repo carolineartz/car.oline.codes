@@ -106,8 +106,6 @@ const BoxSizingApp = ({resource: _resource}: {resource: boolean | undefined}) =>
       link="https://codepen.io/carolineartz/details/ogVXZj"
       technologyList={<TechnologyList angular />}
       slug="ogVXZj"
-      // percentWidth={60}
-      // iframe={<ProjectIframe penId="ogVXZj" height={533} title="angular interactive box-model diagram" />}
     >
       <Text>
         An Angular.js app to visualize the box-model. Controls for changing the value of box-sizing highlight

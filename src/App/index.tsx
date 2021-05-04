@@ -7,32 +7,40 @@ import useDeferredMount from "../useDeferredMount";
 import { Projects } from "./../Projects";
 import { GlobalStyles } from "./globalStyles";
 import { theme } from "./theme";
+import { Fade } from "react-awesome-reveal";
 
 const AppContent = () => {
   const shouldMount = useDeferredMount()
   const screenSize = React.useContext(ResponsiveContext);
-  console.log(screenSize);
   const size = screenSize === "small" ? "65px" : "140px";
+
   return (
     <>
+      <Fade>
+        <Box
+          id="section-intro"
+          height="100vh"
+          tag="section"
+          style={{ visibility: shouldMount ? "visible" : "hidden" }}
+          background="#1b1e2d"
+        >
+        <Box pad="medium">
+          <HeadingText fontSize={size}>
+            CAROLINE
+              <br />
+              ARTZ
+            </HeadingText>
+        </Box>
+          <Box justify="center" align="center" height={{ min: "100vh" }}>
 
-        <Box id="section-intro" height="100vh" tag="section" style={{visibility: shouldMount ? "visible" : "hidden"}}>
-      <Box pad="medium" animation="zoomIn">
-        <HeadingText fontSize={size}>
-          CAROLINE
-            <br />
-            ARTZ
-          </HeadingText>
+          <CodingCatEmbed />
+        </Box>
+        </Box>
+        </Fade>
+
+      <Box id="section-portfolio" height={{ min: "100vh" }} pad="medium" tag="section" background="white">
+        <Projects />
       </Box>
-      <Box justify="center" align="center" height={{ min: "100vh" }}>
-        <CodingCatEmbed />
-      </Box>
-    </Box>
-
-  <Box id="section-portfolio" height={{ min: "100vh" }} pad="medium" tag="section" background="white">
-    <Projects />
-          </Box>
-
     </>
   );
 };

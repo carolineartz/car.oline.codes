@@ -8,6 +8,7 @@ import { Projects } from "./../Projects";
 import { GlobalStyles } from "./globalStyles";
 import { theme } from "./theme";
 import { Fade } from "react-awesome-reveal";
+import {NameIntro} from "./../NameIntro"
 
 const AppContent = () => {
   const shouldMount = useDeferredMount()
@@ -17,6 +18,7 @@ const AppContent = () => {
   return (
     <>
       <Fade>
+        <NameIntro />
         <Box
           id="section-intro"
           height="100vh"

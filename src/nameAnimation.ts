@@ -66,8 +66,8 @@ export class NameAnimation {
     this.init();
   }
 
-  animate() {
-    this.mainTimeline.play();
+  animate(onComplete: gsap.Callback = () => {}) {
+    this.mainTimeline.eventCallback("onComplete", onComplete).play();
   }
 
   kill() {

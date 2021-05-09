@@ -44,7 +44,7 @@ const AppContent = () => {
 
 export const App = () => {
   return (
-    <Grommet css="min-height: 100vh; background-color: #1a1e2d;" theme={theme}>
+    <Grommet css="min-height: 100vh" theme={theme}>
       <GlobalStyles />
       <AppContent />
     </Grommet>

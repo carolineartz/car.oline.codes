@@ -1,8 +1,11 @@
 import { gsap } from "gsap";
 import GSDevTools from "gsap/GSDevTools";
 import SplitText from "gsap/SplitText";
+import { timeStamp } from "node:console";
 
-const COLORS = ["#2f2cf3", "#2c00ef", "#4a00d5", "#6400c4", "#9700d4", "#cd00cc", "#c2008c"];
+// const COLORS = ["#2f2cf3", "#2c00ef", "#4a00d5", "#6400c4", "#9700d4", "#cd00cc", "#c2008c"];
+
+const COLORS = ["#ffcc81", "#ff61d8", "#569cfa", "#7ed1e2", "#a5ea9b"];
 const CHAR_CLASS = "char";
 
 enum STRETCH {
@@ -17,7 +20,6 @@ enum WEIGHT {
   END = 700,
 }
 
-const interpolateColor = gsap.utils.interpolate(COLORS);
 (gsap as any).registerPlugin(SplitText, GSDevTools);
 
 export class NameAnimation {
@@ -28,6 +30,7 @@ export class NameAnimation {
   private firstNameSplitText: SplitText;
   private lastNameSplitText: SplitText;
   private socialIconEls: Element[];
+  private interpolateColor: (progress: number) => string;
 
   constructor({
     firstNameEl,
@@ -62,6 +65,8 @@ export class NameAnimation {
       id: "main",
       smoothChildTiming: true,
     });
+
+    this.interpolateColor = this.createInterpolator();
 
     this.init();
   }
@@ -116,10 +121,11 @@ export class NameAnimation {
           {
             position: "absolute",
             fontWeight: opts.startWeight,
+            fontStretch: STRETCH.MIN,
           },
           {
-            delay: 0.5,
-            color: (i, _t, ts) => interpolateColor(i / ts.length),
+            delay: 0.2,
+            color: (i, _t, ts) => this.interpolateColor(i / ts.length),
             fontStretch: STRETCH.MAX,
             fontWeight: opts.startWeight === WEIGHT.MAX ? WEIGHT.MIN : WEIGHT.MAX,
             position: "relative",
@@ -167,9 +173,27 @@ export class NameAnimation {
         this.socialIconEls.flatMap((el) => [...el.children]),
         {
           fill: (i, _t, ts) =>
-            interpolateColor((i + (this.firstNameChars.length - ts.length)) / this.firstNameChars.length),
+            this.interpolateColor(
+              (i + (this.firstNameChars.length - ts.length)) / this.firstNameChars.length
+            ),
         },
         0
       );
+  }
+
+  private createInterpolator(): (progress: number) => string {
+    const style = getComputedStyle(document.documentElement);
+
+    try {
+      const green = style.getPropertyValue("--green");
+      const pink = style.getPropertyValue("--pink");
+      const blue = style.getPropertyValue("--blue");
+      const orange = style.getPropertyValue("--orange");
+      const cyan = style.getPropertyValue("--cyan");
+
+      return gsap.utils.interpolate([orange, pink, blue, cyan, green]);
+    } catch (e) {
+      return (progress: number) => "#7ed1e2";
+    }
   }
 }

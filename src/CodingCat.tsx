@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Box } from "grommet"
 import { CodingCatAnimation } from "./codingCatAnimation"
 
-export const CodingCat = () => {
+export const CodingCat = React.memo(() => {
   const containerRef = React.useRef<HTMLDivElement | null>(null)
   const musicNotesRightContainerRef = React.useRef<SVGGElement | null>(null)
   const musicNotesLeftContainerRef = React.useRef<SVGGElement | null>(null)
@@ -254,14 +254,9 @@ export const CodingCat = () => {
       </svg>
     </CodingCatContainer>
   )
-}
+})
 
 const CodingCatContainer = styled(Box)`
-  --green: #a5ea9b;
-  --pink: #ff61d8;
-  --blue: #569cfa;
-  --orange: #ffcc81;
-  --cyan: #7ed1e2;
 
     svg {
       height: 100%;
@@ -283,7 +278,7 @@ const CodingCatContainer = styled(Box)`
   }
 
   .paw, .head {
-    stroke: var(--orange);
+    stroke: var(--color-1);
   }
 
   .laptop-keyboard {
@@ -296,26 +291,36 @@ const CodingCatContainer = styled(Box)`
 
   .music .note,
   .laptop-base,
-  .laptop-cover,
+  .laptop-cover  {
+    stroke: var(--color-5);
+  }
+
   .paw .pads {
-    stroke: var(--pink);
+    stroke: var(--color-2);
   }
 
   .table line,
   .headphone .band,
   .headphone .speaker path:nth-child(3) {
-    stroke: var(--green);
+    stroke: var(--color-7);
   }
 
-  .terminal-frame,
+
   .laptop-keyboard,
   .headphone .speaker path:nth-child(2) {
-    stroke: var(--blue);
+    stroke: var(--color-3);
   }
 
-  .terminal-code,
+  .terminal-frame {
+    stroke: var(--color-8);
+  }
+
+  .terminal-code {
+    stroke: var(--color-4);
+  }
+
   .headphone .speaker path:first-child {
-    stroke: var(--cyan);
+    stroke: var(--color-6);
   }
 `
 

@@ -12,11 +12,11 @@ export const theme: ThemeType = deepFreeze(
         text: {
           light: "rgba(39, 36, 66, 1.000)",
         },
-        brand: "#f95152",
-        "accent-1": "#3BD2D3",
-        "accent-2": "#CBE580",
-        "accent-3": "#3e90de",
-        "accent-4": "#1b1e2d",
+        brand: "#cb3c9b",
+        "accent-1": "#791b85",
+        "accent-2": "#3226C4",
+        "accent-3": "#4db1f9",
+        "accent-4": "#1accb0",
       },
     },
     anchor: {

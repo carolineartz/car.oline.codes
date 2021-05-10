@@ -89,22 +89,28 @@ export class NameAnimation {
     });
 
     this.mainTimeline
+      .pause()
       .add(this.animateIn())
-      .add(
-        this.animateName(this.firstNameChars, { id: "first-name", timeScale: 1.5, startWeight: WEIGHT.MAX })
-      )
-      .add(
-        this.animateName(this.lastNameChars, { id: "last-name", timeScale: 1.8, startWeight: WEIGHT.MIN }),
-        "<0.25"
-      )
+      .add(this.animateName(this.firstNameChars, { timeScale: 1.5, startWeight: WEIGHT.MAX }))
+      .add(this.animateName(this.lastNameChars, { timeScale: 1.8, startWeight: WEIGHT.MIN }), "<0.25")
       .add(this.animateLastNameDown())
-      .add(this.animateSocialIn());
+      .add(this.animateSocialIn())
+      .add(this.animateScale());
   }
 
   private animateIn() {
     return gsap.to(this.containerEl, {
       autoAlpha: 1,
       ease: "none",
+    });
+  }
+
+  private animateScale() {
+    return gsap.to(this.containerEl, {
+      height: "50vh",
+      scale: 0.85,
+      ease: "circ.out",
+      delay: 0.5,
     });
   }
 

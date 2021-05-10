@@ -52,20 +52,33 @@ export class CodingCatAnimation {
     this.terminalCodeLines = [...terminal.children];
     this.mainTimeline = gsap.timeline();
 
-    gsap.set(this.noteEls, { scale: 0, autoAlpha: 1 });
+    this.init();
   }
 
   animate() {
+    this.mainTimeline.play();
+  }
+
+  init() {
+    gsap.set(this.noteEls, { scale: 0, autoAlpha: 1 });
+
     this.mainTimeline
+      .pause()
+      .add(this.animateIn())
       .add(this.animatePaws())
       .add(this.animateTerminalLines(), 0)
-      .add(this.animateNotes(), 0)
-      .play();
+      .add(this.animateNotes(), 0);
   }
 
   kill() {
     this.mainTimeline.kill();
-    // gsap.killTweensOf("*");
+  }
+
+  private animateIn() {
+    return gsap.to(this.containerEl, {
+      autoAlpha: 1,
+      ease: "none",
+    });
   }
 
   private animatePaws() {

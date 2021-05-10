@@ -23,7 +23,7 @@ export const Projects = () => {
 
   return (
     <Box>
-      <Heading color="accent-4" level="1" css="margin-bottom: 2rem" size="large">
+      <Heading level="1" css="margin-bottom: 2rem" size="large">
         Selected Projects
       </Heading>
       <Box gap="large" width={{ max: "1200px" }} alignSelf="center">
@@ -58,7 +58,7 @@ const PatternParty = (): JSX.Element => {
       imagePaths={["assets/pattern-party.gif"]}
       technologyList={<TechnologyList react cssDoodle firebase grommet styledComponents typescript />}
     >
-      <Text color="accent-4" margin={{ bottom: "medium" }}>
+      <Text margin={{ bottom: "medium" }}>
         Web app for finding and sharing SVG patterns. In-app SVG generator via{" "}
         <Anchor href="https://doodad.dev" label="Doodad.dev" />.
       </Text>

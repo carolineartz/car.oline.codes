@@ -1,9 +1,11 @@
 import React from "react"
 import styled from "styled-components"
+import "styled-components/macro"
+
 import { Box } from "grommet"
 import { CodingCatAnimation } from "@/animations/codingCatAnimation"
 
-export const CodingCat = React.memo(() => {
+export const CodingCat = React.memo(({start}: {start?: boolean} = {start: false}) => {
   const containerRef = React.useRef<HTMLDivElement | null>(null)
   const musicNotesRightContainerRef = React.useRef<SVGGElement | null>(null)
   const musicNotesLeftContainerRef = React.useRef<SVGGElement | null>(null)
@@ -46,8 +48,6 @@ export const CodingCat = React.memo(() => {
         },
         terminal: terminalCodeRef.current
       })
-
-      animationRef.current.animate()
     }
 
     return () => {
@@ -55,8 +55,17 @@ export const CodingCat = React.memo(() => {
     }
   }, [])
 
+  React.useEffect(() => {
+    if (start) {
+      console.log("calling animate!")
+       animationRef.current?.animate()
+    } else {
+      console.log("start is false")
+    }
+  }, [start])
+
   return (
-    <CodingCatContainer className="coding-cat-animation" ref={containerRef} width="80%" height="80%">
+    <CodingCatContainer className="coding-cat-animation" ref={containerRef} width="80%" height="80%" alignSelf="center" justify="center">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 783.55 354.91">
         <g id="bongo-cat">
           <g className="head">
@@ -257,20 +266,24 @@ export const CodingCat = React.memo(() => {
 })
 
 const CodingCatContainer = styled(Box)`
+  svg {
+    height: 100%;
+    width: 100%;
+    overflow: visible;
 
-    svg {
-      height: 100%;
-      width: 100%;
-      overflow: visible;
+    > g {
+      fill: var(--bg);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 4;
 
-      > g {
-        fill: var(--bg);
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 4;
-
-      }
     }
+  }
+
+  position: relative;
+  visibility: hidden;
+  /* .coding-cat-animation  { */
+  /* } */
 
   .laptop-cover,
   .headphone .band {
@@ -307,7 +320,7 @@ const CodingCatContainer = styled(Box)`
 
 
   .laptop-keyboard,
-  .headphone .speaker path:nth-child(2) {
+  .terminal-code  {
     stroke: var(--color-3);
   }
 
@@ -315,79 +328,11 @@ const CodingCatContainer = styled(Box)`
     stroke: var(--color-8);
   }
 
-  .terminal-code {
-    stroke: var(--color-4);
-  }
-
   .headphone .speaker path:first-child {
     stroke: var(--color-6);
   }
+
+  .headphone .speaker path:nth-child(2) {
+    stroke: var(--color-4);
+  }
 `
-
-
-
-// export const CodingCatGlobalStyles = createGlobalStyle`
-//   :root {
-//     --bg: #1a1e2d;
-//     --green: #a5ea9b;
-//     --pink: #ff61d8;
-//     --blue: #569cfa;
-//     --orange: #ffcc81;
-//     --cyan: #7ed1e2;
-//   }
-
-
-//   .name-animation {
-//     background: var(--bg);
-//     height: 100vh;
-//     width: 100vw;
-
-//     .grid-container {
-//       height: 100%;
-//       margin: 0;
-//       display: grid;
-//       grid-template-columns: 0.5fr min-content 0.5fr;
-//     }
-
-//     .content {
-//       display: flex;
-//       align-items: center;
-//     }
-
-//     .container {
-//       position: relative;
-//       visibility: hidden;
-//       opacity: 0;
-//     }
-
-//     .animation {
-//       &&__social {
-//         display: flex;
-//         flex-direction: "row";
-//       }
-//     }
-
-//     .name {
-//       color: var(--name, #2f2cf3);
-//       white-space: pre;
-
-//       &__hidden {
-//         visibility: hidden;
-//         font-weight: var(--weight-end, 400);
-//       }
-
-//       &__first, &__last {
-//         position: absolute;
-//         top: -30%;
-//       }
-
-//       &__last {
-//         .char {
-//           &:first-child, &:nth-child(6), &:nth-child(7), &:nth-child(8) {
-//             visibility: hidden;
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

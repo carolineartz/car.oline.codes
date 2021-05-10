@@ -2,9 +2,6 @@ import { gsap } from "gsap";
 import GSDevTools from "gsap/GSDevTools";
 import SplitText from "gsap/SplitText";
 
-// const COLORS = ["#2f2cf3", "#2c00ef", "#4a00d5", "#6400c4", "#9700d4", "#cd00cc", "#c2008c"];
-
-const COLORS = ["#ffcc81", "#ff61d8", "#569cfa", "#7ed1e2", "#a5ea9b"];
 const CHAR_CLASS = "char";
 
 enum STRETCH {
@@ -29,6 +26,7 @@ export class NameAnimation {
   private firstNameSplitText: SplitText;
   private lastNameSplitText: SplitText;
   private socialIconEls: Element[];
+  private colors: string[];
   private interpolateColor: (progress: number) => string;
 
   constructor({
@@ -42,10 +40,13 @@ export class NameAnimation {
     containerEl: HTMLElement;
     socialContainerEl: HTMLElement;
   }) {
+    this.colors = this.setColors();
+    this.interpolateColor = this.createInterpolator(this.colors);
+
     this.socialIconEls = [...socialContainerEl.children].filter((el) => el.nodeName === "svg");
 
     this.containerEl = containerEl;
-    this.containerEl.style.setProperty("--name", COLORS[0]);
+    this.containerEl.style.setProperty("--name", this.colors[0]);
     this.containerEl.style.setProperty("--weight-end", WEIGHT.END.toString());
 
     this.firstNameSplitText = new SplitText(firstNameEl, {
@@ -64,8 +65,6 @@ export class NameAnimation {
       id: "main",
       smoothChildTiming: true,
     });
-
-    this.interpolateColor = this.createInterpolator();
 
     this.init();
   }
@@ -159,7 +158,7 @@ export class NameAnimation {
         this.socialIconEls,
         {
           x: window.innerWidth / 2,
-          fill: COLORS[COLORS.length - 1],
+          fill: this.colors[this.colors.length - 1],
         },
         {
           x: 0,
@@ -180,17 +179,24 @@ export class NameAnimation {
       );
   }
 
-  private createInterpolator(): (progress: number) => string {
+  private setColors() {
     const style = getComputedStyle(document.documentElement);
 
-    try {
-      const green = style.getPropertyValue("--green");
-      const pink = style.getPropertyValue("--pink");
-      const blue = style.getPropertyValue("--blue");
-      const orange = style.getPropertyValue("--orange");
-      const cyan = style.getPropertyValue("--cyan");
+    const color1 = style.getPropertyValue("--color-1");
+    const color2 = style.getPropertyValue("--color-2");
+    const color3 = style.getPropertyValue("--color-3");
+    const color4 = style.getPropertyValue("--color-4");
+    const color5 = style.getPropertyValue("--color-5");
+    const color6 = style.getPropertyValue("--color-6");
+    const color7 = style.getPropertyValue("--color-7");
+    const color8 = style.getPropertyValue("--color-8");
 
-      return gsap.utils.interpolate([orange, pink, blue, cyan, green]);
+    return [color1, color2, color3, color4, color5, color6, color7, color8];
+  }
+
+  private createInterpolator(colors: string[]): (progress: number) => string {
+    try {
+      return gsap.utils.interpolate(colors);
     } catch (e) {
       return (progress: number) => "#7ed1e2";
     }

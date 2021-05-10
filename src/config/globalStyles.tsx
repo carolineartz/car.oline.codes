@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
     --spanish-violet: #452777ff;
     --blue-violet-color-wheel: #471069ff;
 
-    --color-1: #30c5d2ff;
+    /* --color-1: #30c5d2ff;
     --color-2: #3698b8ff;
     --color-3: #3c6b9eff;
     --color-4: #423e84ff;
@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-3: #509ee2;
     --color-4: #4700ab;
     --color-5: #d8f628;
-    --color-6: #8ecfeb;
+    --color-6: #8ecfeb; */
 
     --color-1: #cb3c9b;
     --color-2: #791b85;

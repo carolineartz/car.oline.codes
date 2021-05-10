@@ -36,7 +36,7 @@ export const Projects = () => {
 const EachProject = ({resource}: {resource: boolean | undefined}) => {
   return (
     <Suspense fallback={<Spinner />}>
-      <Fade >
+      <Fade triggerOnce>
         <PatternParty />
         <ShareASketch />
         <ElmInTheSpring />

@@ -9,7 +9,7 @@ import { NameIntro } from "@/components/NameIntro"
 const AppContent = () => {
   return (
     <>
-      <Fade>
+      <Fade triggerOnce>
         <NameIntro />
       </Fade>
       <Box id="section-portfolio" pad="medium" tag="section" background="white">

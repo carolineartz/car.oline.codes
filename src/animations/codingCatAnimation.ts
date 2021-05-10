@@ -13,6 +13,7 @@ export class CodingCatAnimation {
   private pawLeftDownEl: SVGElement;
   private terminalCodeLines: Element[];
   private mainTimeline: gsap.core.Timeline;
+  private colors: string[];
   private noteColorizer: () => string;
 
   constructor({
@@ -41,7 +42,8 @@ export class CodingCatAnimation {
     this.noteEls = [musicNotes.rightContainer, musicNotes.leftContainer].flatMap((container) => [
       ...container.children,
     ]);
-    this.noteColorizer = this.createNoteColorizer();
+    this.colors = this.setColors();
+    this.noteColorizer = this.createNoteColorizer(this.colors);
     this.containerEl = animationContainerEl;
     this.pawRightUpEl = paws.right.up;
     this.pawRightDownEl = paws.right.down;
@@ -130,30 +132,26 @@ export class CodingCatAnimation {
     });
   }
 
-  private createNoteColorizer() {
-    const style = getComputedStyle(document.documentElement);
-
+  private createNoteColorizer(colors: string[]) {
     try {
-      const green = style.getPropertyValue("--green");
-      const pink = style.getPropertyValue("--pink");
-      const blue = style.getPropertyValue("--blue");
-      const orange = style.getPropertyValue("--orange");
-      const cyan = style.getPropertyValue("--cyan");
-
-      const color1 = style.getPropertyPriority("--color-1");
-      const color2 = style.getPropertyPriority("--color-2");
-      const color3 = style.getPropertyPriority("--color-3");
-      const color4 = style.getPropertyPriority("--color-4");
-      const color5 = style.getPropertyPriority("--color-5");
-      const color6 = style.getPropertyPriority("--color-6");
-      const color7 = style.getPropertyPriority("--color-7");
-      const color8 = style.getPropertyPriority("--color-8");
-
-      return gsap.utils.random([green, pink, blue, orange, cyan, "#a3a4ec", "#67b5c0", "#fd7c6e"], true);
+      return gsap.utils.random(colors, true);
     } catch (e) {
       return gsap.utils.random(["pink"], true);
     }
   }
-}
 
-// const COLORS = ["#2f2cf3", "#2c00ef", "#4a00d5", "#6400c4", "#9700d4", "#cd00cc", "#c2008c"];
+  private setColors() {
+    const style = getComputedStyle(document.documentElement);
+
+    const color1 = style.getPropertyValue("--color-1");
+    const color2 = style.getPropertyValue("--color-2");
+    const color3 = style.getPropertyValue("--color-3");
+    const color4 = style.getPropertyValue("--color-4");
+    const color5 = style.getPropertyValue("--color-5");
+    const color6 = style.getPropertyValue("--color-6");
+    const color7 = style.getPropertyValue("--color-7");
+    const color8 = style.getPropertyValue("--color-8");
+
+    return [color1, color2, color3, color4, color5, color6, color7, color8];
+  }
+}

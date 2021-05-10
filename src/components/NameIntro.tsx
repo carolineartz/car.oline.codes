@@ -2,15 +2,16 @@ import React from "react"
 import { Box } from "grommet"
 import "styled-components/macro"
 import styled, { createGlobalStyle } from "styled-components"
-import { NameAnimation } from "./nameAnimation"
-import { ReactComponent as LinkedIn } from "./logos/linkedin.svg";
-import { ReactComponent as Github } from "./logos/github.svg";
-import { ReactComponent as CodePen } from "./logos/codepen.svg";
-import { ReactComponent as Twitter } from "./logos/twitter.svg";
-import { useSceenSize } from "./useScreenSize"
-import {CodingCat} from "./CodingCat"
+import { NameAnimation } from "@/animations/nameAnimation"
+import { ReactComponent as LinkedIn } from "@/svg/logos/linkedin.svg";
+import { ReactComponent as Github } from "@/svg/logos/github.svg";
+import { ReactComponent as CodePen } from "@/svg/logos/codepen.svg";
+import { ReactComponent as Twitter } from "@/svg/logos/twitter.svg";
+import { useSceenSize } from "@/hooks/useScreenSize"
+import {CodingCat} from "@/components/CodingCat"
 
 export const NameIntro = React.memo(() => {
+  console.log("rendering name intro")
   const containerRef = React.useRef<HTMLDivElement>(null)
   const firstNameRef = React.useRef<HTMLDivElement>(null)
   const lastNameRef = React.useRef<HTMLDivElement>(null)

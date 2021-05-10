@@ -1,7 +1,6 @@
 import { gsap } from "gsap";
 import GSDevTools from "gsap/GSDevTools";
 import SplitText from "gsap/SplitText";
-import { timeStamp } from "node:console";
 
 // const COLORS = ["#2f2cf3", "#2c00ef", "#4a00d5", "#6400c4", "#9700d4", "#cd00cc", "#c2008c"];
 

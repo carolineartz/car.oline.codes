@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Box } from "grommet"
-import { CodingCatAnimation } from "./codingCatAnimation"
+import { CodingCatAnimation } from "@/animations/codingCatAnimation"
 
 export const CodingCat = React.memo(() => {
   const containerRef = React.useRef<HTMLDivElement | null>(null)

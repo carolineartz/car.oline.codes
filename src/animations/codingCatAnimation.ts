@@ -140,6 +140,15 @@ export class CodingCatAnimation {
       const orange = style.getPropertyValue("--orange");
       const cyan = style.getPropertyValue("--cyan");
 
+      const color1 = style.getPropertyPriority("--color-1");
+      const color2 = style.getPropertyPriority("--color-2");
+      const color3 = style.getPropertyPriority("--color-3");
+      const color4 = style.getPropertyPriority("--color-4");
+      const color5 = style.getPropertyPriority("--color-5");
+      const color6 = style.getPropertyPriority("--color-6");
+      const color7 = style.getPropertyPriority("--color-7");
+      const color8 = style.getPropertyPriority("--color-8");
+
       return gsap.utils.random([green, pink, blue, orange, cyan, "#a3a4ec", "#67b5c0", "#fd7c6e"], true);
     } catch (e) {
       return gsap.utils.random(["pink"], true);

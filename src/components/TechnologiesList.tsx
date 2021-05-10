@@ -3,17 +3,17 @@ import "styled-components/macro";
 
 import { Box, Text } from "grommet";
 
-import { ReactComponent as CssDoodleLogo } from "./logos/css-doodle.svg";
-import { ReactComponent as FirebaseLogo } from "./logos/firebase.svg";
-import { ReactComponent as GrommetLogo } from "./logos/grommet.svg";
-import { ReactComponent as ReactLogo } from "./logos/react.svg";
-import { ReactComponent as StyledComponentsLogo } from "./logos/styled-components.svg";
-import { ReactComponent as TypeScriptLogo } from "./logos/typescript.svg";
-import { ReactComponent as ElmLogo } from "./logos/elm.svg";
-import { ReactComponent as PostCssLogo } from "./logos/postcss.svg";
-import { ReactComponent as AngularLogo } from "./logos/angular.svg";
-import { ReactComponent as GSAPLogo } from "./logos/gsap.svg";
-import { ReactComponent as P5JSLogo } from "./logos/p5js.svg";
+import { ReactComponent as CssDoodleLogo } from "@/svg/logos/css-doodle.svg";
+import { ReactComponent as FirebaseLogo } from "@/svg/logos/firebase.svg";
+import { ReactComponent as GrommetLogo } from "@/svg/logos/grommet.svg";
+import { ReactComponent as ReactLogo } from "@/svg/logos/react.svg";
+import { ReactComponent as StyledComponentsLogo } from "@/svg/logos/styled-components.svg";
+import { ReactComponent as TypeScriptLogo } from "@/svg/logos/typescript.svg";
+import { ReactComponent as ElmLogo } from "@/svg/logos/elm.svg";
+import { ReactComponent as PostCssLogo } from "@/svg/logos/postcss.svg";
+import { ReactComponent as AngularLogo } from "@/svg/logos/angular.svg";
+import { ReactComponent as GSAPLogo } from "@/svg/logos/gsap.svg";
+import { ReactComponent as P5JSLogo } from "@/svg/logos/p5js.svg";
 
 type TechnologyListProps = {
   react?: boolean;

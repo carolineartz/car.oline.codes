@@ -2,8 +2,8 @@ import "styled-components/macro";
 
 import { Text, Anchor, Heading, Box, Spinner } from "grommet";
 import React, {Suspense} from "react";
-import { PortfolioItem } from "./PortfolioItem";
-import { TechnologyList } from "./TechnologiesList";
+import { PortfolioItem } from "@/components/PortfolioItem";
+import { TechnologyList } from "@/components/TechnologiesList";
 import { Fade } from "react-awesome-reveal";
 
 import loadjs from "loadjs"

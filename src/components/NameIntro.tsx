@@ -11,7 +11,6 @@ import { useSceenSize } from "@/hooks/useScreenSize"
 import { CodingCat } from "@/components/CodingCat"
 
 export const NameIntro = React.memo(() => {
-  console.log("rendering name intro")
   const containerRef = React.useRef<HTMLDivElement>(null)
   const firstNameRef = React.useRef<HTMLDivElement>(null)
   const lastNameRef = React.useRef<HTMLDivElement>(null)
@@ -83,9 +82,6 @@ const AnimationNameEl = styled(Box)<AnimationNameElProps>`
   text-rendering: geometricPrecision;
   font-size: ${props => props.size === "small" ? "5em" : props.size === "medium" ? "7em" : "10em"};
   line-height: 1.15;
-
-  /* visibility: hidden;
-  opacity: 0; */
 
   background: var(--bg);
   height: 100vh;

@@ -57,10 +57,7 @@ export const CodingCat = React.memo(({start}: {start?: boolean} = {start: false}
 
   React.useEffect(() => {
     if (start) {
-      console.log("calling animate!")
        animationRef.current?.animate()
-    } else {
-      console.log("start is false")
     }
   }, [start])
 
@@ -131,7 +128,7 @@ export const CodingCat = React.memo(({start}: {start?: boolean} = {start: false}
           </g>
           <g className="table">
             <polygon points="25.3 158.5 783.2 293 513 354.9 25.3 158.5"></polygon>
-            <line x1="25.3" y1="158.5" x2="783.2" y2="293" fill="none" stroke="#8d00fc" strokeMiterlimit="10" strokeWidth="4"></line>
+            <line x1="25.3" y1="158.5" x2="783.2" y2="293" fill="none" strokeMiterlimit="10" strokeWidth="4"></line>
             <line x1="783.2" y1="293" x2="25.3" y2="158.5" fill="none"></line>
           </g>
           <polygon className="laptop-base" points="103.2 263.6 258.9 219.3 636.5 294.4 452.1 339 103.2 263.6"></polygon>
@@ -282,8 +279,6 @@ const CodingCatContainer = styled(Box)`
 
   position: relative;
   visibility: hidden;
-  /* .coding-cat-animation  { */
-  /* } */
 
   .laptop-cover,
   .headphone .band {

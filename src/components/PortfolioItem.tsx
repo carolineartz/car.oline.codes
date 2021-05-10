@@ -60,7 +60,7 @@ export const PortfolioItem = ({
             )}
           </Box>
           {Boolean(text) && (
-            <Text color="accent-4" margin={{ bottom: "medium" }}>
+            <Text margin={{ bottom: "medium" }}>
               {text}
             </Text>
           )}

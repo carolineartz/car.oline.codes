@@ -36,15 +36,17 @@ export const Projects = () => {
 const EachProject = ({resource}: {resource: boolean | undefined}) => {
   return (
     <Suspense fallback={<Spinner />}>
+      {/* <Fade triggerOnce> */}
       <Fade triggerOnce>
-        <PatternParty />
+      <PatternParty />
         <ShareASketch />
         <ElmInTheSpring />
         <BoxSizingApp resource={resource}  />
         <SpotlightCursor resource={resource} />
         <GSAPNameAnimation resource={resource}  />
-        <MagneticCodePenLogo resource={resource}  />
-      </Fade>
+        <MagneticCodePenLogo resource={resource} />
+        </Fade>
+      {/* </Fade> */}
     </Suspense>
   )
 }

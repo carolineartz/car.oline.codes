@@ -57,6 +57,49 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
   const [activeIndex, setActiveIndex] = React.useState<number | undefined>(undefined)
   const shouldAnimateRef = React.useRef(true)
 
+  const handleChangeActiveIndex = React.useCallback(([index]: number[], animate = true) => {
+    shouldAnimateRef.current = animate
+
+    const currentlyActiveSection = typeof activeIndex === "number" ? Object.keys(NAV_ITEMS)[activeIndex] as NavSection : undefined
+    const targetSection = sections[index]
+    const scrollToSection = () => {
+      if (targetSection) {
+        scroller.scrollTo(targetSection, {
+          duration: 300,
+          smooth: true,
+        })
+      }
+    }
+
+    if (currentlyActiveSection === "projects" || targetSection === "projects") {
+      shouldAnimateRef.current = false
+    }
+
+    if (typeof index === "number" && typeof activeIndex === "number" && activeIndex < index) {
+      shouldAnimateRef.current = false
+      setActiveIndex(undefined)
+      setTimeout(scrollToSection, 10)
+    } else if (targetSection) {
+      scrollToSection()
+    } else {
+      setActiveIndex(undefined)
+    }
+  }, [activeIndex, sections])
+
+  const handleDirectNavigation = React.useCallback(() => {
+    const initialLocation = window.location.hash.substring(1)
+
+    if (initialLocation && sections.includes(initialLocation as NavSection)) {
+      const index = sections.indexOf(initialLocation as NavSection)
+      handleChangeActiveIndex([index])
+    }
+  }, [handleChangeActiveIndex, sections])
+
+  React.useEffect(() => {
+    handleDirectNavigation()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   React.useLayoutEffect(() => {
     const onScrollBegin = (to: string, element: any) => {
       const sectionHash: string | undefined = element?.id
@@ -65,20 +108,23 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
       if (sectionIndex !== -1) {
         setActiveIndex(sectionIndex)
       }
-
-      console.log("activeIndex - BEGIN", activeIndex)
     }
 
     const onScrollEnd = (to: string, element: any) => {
-      console.log("END", "to", to, "emement", element)
-
       const windowHash = window.location.hash.substr(1)
       const sectionHash: string | undefined = element?.id
 
       if (sectionHash && windowHash !== sectionHash) {
+        // window.location.hash = sectionHash
         updateHash(sectionHash)
       }
     }
+
+    const handlePopState = (evt: any) => {
+      handleDirectNavigation()
+    }
+
+    window.addEventListener("popstate", handlePopState)
 
     Scroll.Events.scrollEvent.remove('begin');
     Scroll.Events.scrollEvent.remove('end');
@@ -89,8 +135,10 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
     return () => {
       Scroll.Events.scrollEvent.remove('begin');
       Scroll.Events.scrollEvent.remove('end');
+
+      window.removeEventListener("popstate", handlePopState)
     }
-  }, [sections, activeIndex])
+  }, [sections, activeIndex, handleDirectNavigation])
 
   const activeSection = typeof activeIndex === "number" ? Object.keys(NAV_ITEMS)[activeIndex] as NavSection : undefined
 
@@ -100,37 +148,7 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
         shouldAnimateRef,
         sections,
         activeIndex,
-        onActiveIndex: ([index]: number[], animate = true) => {
-          shouldAnimateRef.current = animate
-          const targetSection = sections[index]
-          const scrollToSection = () => {
-            if (targetSection) {
-              scroller.scrollTo(targetSection, {
-                duration: 300,
-                smooth: true,
-              })
-            }
-          }
-
-          if (activeSection === "projects" || targetSection === "projects") {
-            shouldAnimateRef.current = false
-          }
-
-          if (typeof index === "number" && typeof activeIndex === "number" && activeIndex < index) {
-            shouldAnimateRef.current = false
-
-            setActiveIndex(undefined)
-            setTimeout(scrollToSection, 10)
-          }
-
-          else if (targetSection) {
-            scrollToSection()
-          }
-
-          else {
-            setActiveIndex(undefined)
-          }
-        },
+        onActiveIndex: handleChangeActiveIndex,
         activeItem: activeSection ? NAV_ITEMS[activeSection] : undefined,
         activeSection,
         onActiveSection: (section?: NavSection) => {

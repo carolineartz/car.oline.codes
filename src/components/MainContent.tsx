@@ -14,22 +14,22 @@ export const MainContent = () => {
     <Box fill='horizontal'>
       <Scroll.Element name={SCROLL_CONTAINER_ID} id={SCROLL_CONTAINER_ID}>
         <Accordion animate={navContext.shouldAnimateRef?.current} onActive={navContext.onActiveIndex} activeIndex={navContext.activeIndex}>
-          <AccordionPanel id="foo" header={<AccordionHeading name={NAV_ITEMS.about.name} label={NAV_ITEMS.about.label} />}>
+          <AccordionPanel header={<AccordionHeading name={NAV_ITEMS.about.name} label={NAV_ITEMS.about.label} active={NAV_ITEMS.about.name === navContext.activeSection} />}>
             <Box pad="medium">
               <Text>One</Text>
             </Box>
           </AccordionPanel>
-          <AccordionPanel header={<AccordionHeading name={NAV_ITEMS.projects.name} label={NAV_ITEMS.projects.label} />}>
+          <AccordionPanel header={<AccordionHeading name={NAV_ITEMS.projects.name} label={NAV_ITEMS.projects.label} active={NAV_ITEMS.projects.name === navContext.activeSection} />}>
             <Box pad="medium">
               <Projects />
             </Box>
           </AccordionPanel>
-          <AccordionPanel header={<AccordionHeading name={NAV_ITEMS.cv.name} label={NAV_ITEMS.cv.label} />}>
+          <AccordionPanel header={<AccordionHeading name={NAV_ITEMS.cv.name} label={NAV_ITEMS.cv.label} active={NAV_ITEMS.cv.name === navContext.activeSection} />}>
             <Box pad="medium">
               <Text>Three</Text>
             </Box>
           </AccordionPanel>
-          <AccordionPanel header={<AccordionHeading name={NAV_ITEMS.contact.name} label={NAV_ITEMS.contact.label} />}>
+          <AccordionPanel header={<AccordionHeading name={NAV_ITEMS.contact.name} label={NAV_ITEMS.contact.label} active={NAV_ITEMS.contact.name === navContext.activeSection} />}>
             <Box pad="medium">
               <Text>Four</Text>
             </Box>
@@ -46,6 +46,7 @@ type AccordionHeadingProps = {
   label: string
   active?: boolean
 }
+
 const AccordionHeading = ({name, label, active = false}: AccordionHeadingProps) => {
   return (
     <Scroll.Element id={name} name={name}>
